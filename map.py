@@ -9,7 +9,9 @@ middle of the room, with bar stools placed around it. Seedy
 looking individuals sit in the booths placed against the
 walls of the rooms, they all look like they are up to no good.""",
 
-    "exits": {"north":"Tower"}  
+    "exits": {"north":"Tower"},
+
+    "items": [item_photo, item_satans_number]
 }
 
 room_debate = {
@@ -19,7 +21,9 @@ room_debate = {
     """You enter the debate room, two podiums are present
 on the stage and a circle of seats surround them.""",
 
-    "exits": {"west":"Tower"}
+    "exits": {"west":"Tower"},
+
+    "items": []
 }
 
 room_tower = {
@@ -33,7 +37,9 @@ furniture fills the lobby and a bald eagle wearing a
 toupee sits perched inside a golden cage in the very
 middle of the room.""",
 
-    "exits": {"north":"House","east":"Debate","south":"Bar","west":"Office"}
+    "exits": {"north":"House","east":"Debate","south":"Bar","west":"Office"},
+
+    "items": [item_eagle]
 }
 
 room_house = {
@@ -43,11 +49,13 @@ room_house = {
     """The white house is covered in chains and is
 padlocked, as presumed it is a big house that is white!""",
 
-    "exits": {"south":"Tower"}
+    "exits": {"south":"Tower"},
+
+    "items": []
 }
 
 room_vault = {
-    "name": "The Trump Vault"
+    "name": "The Trump Vault",
 
     "description":
     """You open the huge gold door walk inside.  The
@@ -56,11 +64,13 @@ pieces of furniture. A money sofa sits in the far
 corner and a huge flat screen money TV is placed in
 front of it.""",
 
-    "exits": {"south":"Office"}
+    "exits": {"south":"Office"},
+
+    "items": [item_money]
 }
 
 room_office = {
-    "name": "The Trump Office"
+    "name": "The Trump Office",
 
     "description":
     """You walk into the trump office, it’s a
@@ -70,14 +80,16 @@ always look good from every angle. You look yourself
 up and down in one of the mirrors, you’re looking
 hot as always.""",
 
-    "exits": {"north":"Vault","east":"Tower"}
+    "exits": {"north":"Vault","east":"Tower"},
+
+    "items": []
 }
 
 rooms = {
     "Bar": room_bar,
     "Debate": room_debate,
     "Tower": room_tower,
-    "House": room_house
-    "Vault": room_vault
-    "Office": room_office
+    "House": room_house,
+    "Vault": room_vault,
+    "Office": room_office,
 }
