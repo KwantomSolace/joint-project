@@ -1,3 +1,5 @@
+from items import *
+
 room_bar = {
     "name": "Satan's bar",
 
@@ -11,7 +13,7 @@ walls of the rooms, they all look like they are up to no good.""",
 
     "exits": {"north":"Tower"},
 
-    "items": [item_photo, item_satans_number]
+    "items": [item_satans_number, item_photo]
 }
 
 room_debate = {
