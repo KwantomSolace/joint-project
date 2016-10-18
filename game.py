@@ -144,6 +144,7 @@ def execute_go(direction):
         
     if move(current_room["exits"], direction) == rooms['Debate'] and not (item_satans_number in inventory or item_eagle in inventory or item_money in inventory):
         print('You are not prepared for the debate, so you cannot yet enter.')
+        return
     if move(current_room["exits"], direction) == rooms['Debate'] and (item_satans_number in inventory or item_eagle in inventory or item_money in inventory):    
         print('You are prepared for the debate, but you only have one chance to reach 75 million votes. Proceed?')
         player_input = None
@@ -159,6 +160,7 @@ def execute_go(direction):
                 
     if move(current_room["exits"], direction) == rooms['House'] and not item_key in inventory:
         print('The doors to the White House are covered in chains and are padlocked. As presumed, it is a big house that is white!')
+        return
     if move(current_room["exits"], direction) == rooms['House'] and item_key in inventory:    
         print('There\'s no going back once you enter the White House. Proceed?')
         while True:
@@ -168,11 +170,12 @@ def execute_go(direction):
             if normalise_input(player_input) == ('no' or 'nope' or 'n'):
                 pass
             else:
-                print('I didn\'t quite get that. Are you willing to enter the White House?')         
+                print('I didn\'t quite get that. Are you willing to enter the White House?')   
 
     if move(current_room["exits"], direction) == rooms['Booths'] and not item_photo in inventory:
         current_room = move(current_room["exits"], direction)
         inventory.append(item_photo)
+        return
     if move(current_room["exits"], direction) == rooms['Bar'] and not item_satans_number in inventory:
         print('''You go over to the bar and ask for a drink. Satan recognises you
 and says it’s on the house. The two of you chat until you finish
@@ -181,7 +184,7 @@ whenever you need his help.”''')
         inventory.append(item_satans_number)
         current_room = move(current_room["exits"], direction)
         
-    elif is_valid_exit(current_room["exits"], direction):
+    if is_valid_exit(current_room["exits"], direction):
         current_room = move(current_room["exits"], direction)
     else:
         print("You cannot go there.")
