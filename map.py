@@ -20,8 +20,11 @@ room_debate = {
     "name": "The Debate Room",
 
     "description":
-    """You enter the debate room, two podiums are present
-on the stage and a circle of seats surround them.""",
+    """The bright lights cause you to squint as you walk to your podium.
+Once your eyes adjust, you see just how vast and wild the audience is.
+There are stars and stripes everywhere, and someone seems to have brought
+a grill to make burgers. People are riding around on their Walmart mobility
+scooters, complete with monster truck tyres.""",
 
     "exits": {"west":"Tower"},
 
@@ -35,9 +38,8 @@ room_tower = {
     """You enter the majestic building that is trump
 tower. Everything is pained with a sheen of gold, the
 walls, the doors and the floors. Grandiose looking
-furniture fills the lobby and a bald eagle wearing a
-toupee sits perched inside a golden cage in the very
-middle of the room.""",
+furniture fills the lobby and a golden cage meant for
+housing a bald eagle sits in the very middle of the room.""",
 
     "exits": {"north":"House","east":"Debate","south":"Bar","west":"Office"},
 
@@ -63,7 +65,7 @@ room_vault = {
     """You open the huge gold door walk inside.  The
 room is full of money piles fashioned to look like
 pieces of furniture. A money sofa sits in the far
-corner and a huge flat screen money TV is placed in
+corner and a wall-to-wall flat screen money TV is placed in
 front of it.""",
 
     "exits": {"south":"Office"},

@@ -141,8 +141,35 @@ def execute_go(direction):
     moving). Otherwise, it prints "You cannot go there."
     """
     global current_room
-    if is_valid_exit(current_room["exits"], direction):
-        current_room = move(current_room["exits"], direction)
+    
+    if move(current_room["exits"], direction) == rooms['Debate'] and not (item_satans_number in inventory or item_eagle in inventory or item_money in inventory):
+        print('You are not prepared for the debate, so you cannot yet enter.')
+    elif move(current_room["exits"], direction) == rooms['Debate'] and (item_satans_number in inventory or item_eagle in inventory or item_money in inventory):    
+        print('You are prepared for the debate, but you only have one chance to reach 75 million votes. Proceed?')
+        while True:
+            player_input = input('> ')
+            if normalise_input(player_input) == ('yes' or 'y' or 'yup' or 'yeah' or 'yep' or 'aye'):
+                debate()
+            if normalise_input(player_input) == ('no' or 'nope' or 'n'):
+                pass
+            else:
+                print('I didn\'t quite get that. Are you willing to debate?')
+                
+    if move(current_room["exits"], direction) == rooms['House'] and not item_key in inventory:
+        print('The White House is locked.')
+    elif move(current_room["exits"], direction) == rooms['House'] and item_key in inventory:    
+        print('There\'s no going back once you enter the White House. Proceed?')
+        while True:
+            player_input = input('> ')
+            if normalise_input(player_input) == ('yes' or 'y' or 'yup' or 'yeah' or 'yep' or 'aye'):
+                debate()
+            if normalise_input(player_input) == ('no' or 'nope' or 'n'):
+                pass
+            else:
+                print('I didn\'t quite get that. Are you willing to enter the White House?')
+                
+    elif is_valid_exit(current_room["exits"], direction):
+        current_room = move(current_room["exits"], direction)            
     else:
         print("You cannot go there.")
 
@@ -250,7 +277,67 @@ def move(exits, direction):
     # Next room to go to
     return rooms[exits[direction]]
 
+def debate():
+    print room_debate['description']
+    print('''In the debate, the moderator will ask a question, Hillary will respond, then you\'ll make your response.
+          You earn more votes for better-fitting answers, but you cannot make the same response twice. The moderator asks his first question.''')
+          asks his first question.
+    for debate_round in range(1, 7):
+        question = questions[random.randint(0, questions.len())]
+        print(question)
+        #print Hill's response
+        
+        player_response = None
+        response_made = False
+        special_attack = False
+        
+        while not response_made:
+            menu_number = 1
+            for response in responses:
+                print(menu_number + ') ' + response)
+                menu_number += 1
+            #print all available items to use
+            print('Which option would you like to choose?)
+            player_input = input('> ')
+            if player_input in range(1, responses.len()+1):
+                  player_response = responses[player_input-1]
+                  response_made = True
+            if player_input in range(responses.len()+1, menu_number):
+                  special_attack = True
+                  response_made = True
+            else:
+                  print('That didn\'t make sense.')
 
+        if not special_attack:
+            fitting_response = False
+            for question in response['fitting questions']:
+                if question in questions:
+                      fitting_response = True
+                  
+            if fitting_response:
+                print(response['fit result'])
+                votes += response['fit votes']
+            else:
+                print(response['regular result'])
+                votes += response['regular votes']
+
+            responses.remove(player_response)
+        else:
+            #special attack function called
+            #remove item from inventory
+                  
+        questions.remove(question)
+
+    #one last special attack opportunity
+    
+    if votes >= 75000000:
+        print('Congratulations! You won the debate and became president. You obtained the key to the White House.')
+        inventory.append(item_key)
+    else:
+        print('You lost the debate, and Hillary became president. Welp.')
+          
+
+'''
 # This is the entry point of our program
 def main():
 
@@ -272,5 +359,5 @@ def main():
 # '__main__' is the name of the scope in which top-level code executes.
 # See https://docs.python.org/3.4/library/__main__.html for explanation
 if __name__ == "__main__":
-    main()
+    main()'''
 
