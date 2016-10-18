@@ -1,7 +1,7 @@
 from items import *
 from map import rooms
 
-inventory = []
+inventory = [item_portrait, item_hair]
 votes = 70000000
 
 # Start game at the trump tower

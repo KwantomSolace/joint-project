@@ -1,19 +1,16 @@
 item_photo = {
     "id": "photo",
 
-    "name": "A photo of Bill Clinton, in a bar, with a girl",
+    "name": "the photo of Bill Clinton, in a bar, with a girl",
 
     "description":
-    """In a dark corner of Satan's Bar you saw Bill Clinton with
-his arm around a young attractive female. You knew this is
-some useful dirt that could be used against Hillary, so you
-took this picture."""
+    """You can't wait to show this around."""
 }
 
 item_satans_number = {
-    "id": "satans_number",
+    "id": "number",
 
-    "name": "satans phone number",
+    "name": "satan's phone number",
 
     "description":
     """You go over to the bar and ask for a drink. Satan
@@ -35,7 +32,7 @@ a MILLION DOLLAR$. Now you can literally look like a million bucks."""
 item_eagle = {
     "id": "eagle",
 
-    "name": "a bald eagle",
+    "name": "your bald eagle",
 
     "description": "The bald eagle from the Trump Tower proudly wears a toupee."
 }
@@ -43,7 +40,7 @@ item_eagle = {
 item_portrait = {
     "id": "portrait",
     
-    "name": "a portrait of Donald Trump",
+    "name": "the portrait of Donald Trump",
 
     "description": "A picture of yourself, Mr. Donald Trump."
 }
@@ -51,7 +48,7 @@ item_portrait = {
 item_hair = {
     "id": "hair",
     
-    "name": "A hair brush and glue",
+    "name": "your hair brush and glue",
 
     "description": "Absolutely no correlation between the two objects."
 }
@@ -59,7 +56,7 @@ item_hair = {
 item_key = {
     "id": "key",
     
-    "name": "The key to the White House",
+    "name": "the key to the White House",
 
     "description": "You've worked hard for this, Mr. President."
 
