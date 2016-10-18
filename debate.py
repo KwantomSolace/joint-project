@@ -139,3 +139,39 @@ response_people = {
 }
 
 responses = [response_taxes, response_man, response_wall, response_locker_room, response_great, response_guns, response_anthem, response_card, response_noises, response_jfk, response_abuse, response_climate, response_people]
+
+hill_response_poverty = {
+'I want us to invest in YOU, I want us to invest in your future. Donald only cares about the 1%'	
+}
+
+hill_response_president = {
+'Unlike my opponent I actually do have a great temperament *shoulder shimmies*, and I dont grab people by their genitalia.'
+}
+
+hill_response_immigration ={
+'Building a wall isnt going to stop immigrants, probably an idea that wont get through to my dense opponent. What we need is a better system at logging and vetting immigrants'
+}
+
+hill_response_changes= {
+'I will raise taxes for the rich, I will make sure equality is achieved and finally move our country into the Future'
+}
+
+hill_response_inspiration ={
+'Well first of all, I would start appearing on talk shows and do funny segments like carpool karaoke cause theyre hip and i can relate to young people'
+}
+
+hill_repsonse_climate = {
+'Climate change is real people, and it is here. The thing about science is, whether you believe in it or not it is still the truth and everyone of us has to do something.'
+}
+
+hill_repsonse_favourite = {
+'America is the land of endless possibilities, where you can go to the Moon, Become a star, and even run for President regardless of your qualifications.'
+}
+
+hill_repsonse_personal = {
+'I am a very relatable person, I can dab, I can do the nay nay and I can even make YOU Pokemon GO TO THE POLLS!'
+}
+
+hill_response_gun = {
+'I will work with responsible gun owners so we can pass reforms on commonsense because I dont want you to be shot by an idiot *cough* I mean someone who shouldnt have a gun'
+}
