@@ -244,7 +244,7 @@ def execute_look(item_id):
             print(item['description'])
             look_successful = True
     if not look_successful:
-        print("There is no such item.")
+        print("That didn't work.")
         
     
 
@@ -325,7 +325,7 @@ def move(exits, direction):
     return rooms[exits[direction]]
     
         
-def debate():
+def debate():#this function deals with the mechanics for the debate
     '''
     This function deals with the mechanics for the debate:
     The moderator asks six questions.
@@ -342,7 +342,7 @@ Six questions will be asked.
 You earn more votes for better-fitting answers, but you cannot make the same response twice.''')#Insctructions for the debate
     print()
     print('Press enter to continue.')
-    wait = input('> ')
+    wait = input()
     print('The moderator asks his first question.''')
 
     shuffle(responses)
@@ -453,7 +453,7 @@ You earn more votes for better-fitting answers, but you cannot make the same res
     room_debate["image"] = ""
     print()
     print('Press enter to continue.')
-    wait = input('> ')
+    wait = input()
 
 def votes_to_string():#puts commas in the right places
     global votes
@@ -481,7 +481,7 @@ def main():
             previous_room = current_room["name"]#ie. the ASCII art only appears if the player changes rooms
         if current_room == rooms['Bar'] and not item_satans_number in inventory and item_money in inventory:#this executes after you first enter the bar with money in your inventory, and after the room details are displayed
             print('Press enter to continue.')
-            wait = input('> ')
+            wait = input()
             print('''You go over to the bar and slap down $20 for the finest drink on the menu. Satan
 recognises you and says it's on the house. The two of you chat until you finish drinking,
 then he gives you his number, telling you to call him whenever you need his help.''')
@@ -498,7 +498,7 @@ then he gives you his number, telling you to call him whenever you need his help
             print_room(current_room)
             game_over = True
 
-    '''inventory.append(item_money)#meant for testing game. if this is uncommented, comment block above
+    '''inventory.append(item_money)#meant for testing game. if this block is uncommented, comment while loop above
     inventory.append(item_eagle)
     while not game_over:
         print_room(current_room)#is only picking up, dropping, or looking at an item in the room
@@ -510,7 +510,7 @@ then he gives you his number, telling you to call him whenever you need his help
     
     if current_room == rooms['House'] and votes<76500000:
         execute_trump_wins()
-    if current_room == rooms['House'] and votes>=76500000:
+    elif current_room == rooms['House'] and votes>=76500000:
         execute_trump_wins_too_much()
     else:
         execute_hillary_wins()
