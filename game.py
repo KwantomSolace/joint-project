@@ -5,7 +5,6 @@ from map import rooms
 from player import *
 from items import *
 from gameparser import *
-from images import *
 from debate import *
 import os
 
@@ -161,6 +160,7 @@ def execute_go(direction):
                 player_input = input('> ')
                 if len(normalise_input(player_input))>0 and (normalise_input(player_input)[0] == 'yes' or normalise_input(player_input)[0] == 'y' or normalise_input(player_input)[0] == 'yeah' or normalise_input(player_input)[0] == 'yep' or normalise_input(player_input)[0] == 'yup' or normalise_input(player_input)[0] == 'aye'):
                     current_room = move(current_room["exits"], direction)
+                    print_room(current_room)
                     debate()
                     return
                 if len(normalise_input(player_input))>0 and (normalise_input(player_input)[0] == 'no' or normalise_input(player_input)[0] == 'n' or normalise_input(player_input)[0] == 'nope'):

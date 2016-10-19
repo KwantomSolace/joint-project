@@ -25,13 +25,6 @@ def debate():
     The player is judged for how many votes they accumulated.
     '''
     global votes
-    print('''The bright lights cause you to squint as you walk to
-your podium. Once your eyes adjust, you see just how vast and
-wild the audience is. There are stars and stripes everywhere,
-and someone seems to have brought a grill to make burgers.
-People are riding around on their Walmart mobility
-scooters, complete with monster truck tyres.''')
-    print()
     print('''In the debate, the moderator will ask a question, Hillary will respond, then you\'ll make your response.
 Six questions will be asked.
 You earn more votes for better-fitting answers, but you cannot make the same response twice.''')

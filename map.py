@@ -90,9 +90,13 @@ room_debate = {
 
     "name": "the debate hall",
 
-    "description":
-    """The hall is now void of life. You spot a few tattered American flags on the floor.
-There are two podiums are on the stage. It's kinda boring here without you behind one of them.""",
+    "description":"""The bright lights cause you to squint as you walk to
+your podium. Once your eyes adjust, you see just how vast and
+wild the audience is. There are stars and stripes everywhere,
+and someone seems to have brought a grill to make burgers.
+People are riding around on their Walmart mobility
+scooters, complete with monster truck tyres."""
+    ,
 
     "exits": {"out":"Car"},
 

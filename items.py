@@ -1,3 +1,6 @@
+#this file holds the information for all the items
+#info inclues id, name, and description
+
 item_photo = {
     "id": "photo",
 
