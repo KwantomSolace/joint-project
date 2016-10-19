@@ -340,7 +340,7 @@ You earn more votes for better-fitting answers, but you cannot make the same res
     wait = input()
     print('The moderator asks his first question.''')
 
-    '''shuffle(responses)
+    shuffle(responses)
     your_special_attacks = []
     for attack in spatks:
         if attack['item'] in inventory:
@@ -432,8 +432,8 @@ You earn more votes for better-fitting answers, but you cannot make the same res
         print(your_special_attacks[0]['result'])
         votes += your_special_attacks[int(player_input)-1]['votes']
         print()
-        '''
-    votes = 71000000
+        
+    #votes = 78000000#meant for testing game. if this is uncommented, comment from shuffle to line above
     debate_over = True
     print('The debate is over.')
     print('You ended with ' + votes_to_string() + ' votes.')
@@ -470,7 +470,7 @@ def main():
     global previous_room
     previous_room = ''
     
-    '''while not game_over:
+    while not game_over:
         if previous_room != current_room["name"]:#this if statement and the code within prevents the room ASCII art from reappearing if the player
             print_room(current_room)#is only picking up, dropping, or looking at an item in the room
             previous_room = current_room["name"]#ie. the ASCII art only appears if the player changes rooms
@@ -491,9 +491,9 @@ then he gives you his number, telling you to call him whenever you need his help
         execute_command(command)
         if current_room == rooms['House']:#The game ends once Trump goes to the white house with the key in his inventory, or if Hillary wins the debate
             print_room(current_room)
-            game_over = True'''
+            game_over = True
 
-    inventory.append(item_money)
+    '''inventory.append(item_money)#meant for testing game. if this is uncommented, comment block above
     inventory.append(item_eagle)
     while not game_over:
         print_room(current_room)#is only picking up, dropping, or looking at an item in the room
@@ -501,11 +501,11 @@ then he gives you his number, telling you to call him whenever you need his help
         execute_command(command)
         if current_room == rooms['House']:#The game ends once Trump goes to the white house with the key in his inventory, or if Hillary wins the debate
             print_room(current_room)
-            game_over = True
+            game_over = True'''
     
-    if current_room == rooms['House']:
+    if current_room == rooms['House'] and votes<76500000:
         execute_trump_wins()
-    elif votes>=77000000:
+    if current_room == rooms['House'] and votes>=76500000:
         execute_trump_wins_too_much()
     else:
         execute_hillary_wins()

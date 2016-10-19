@@ -1,6 +1,7 @@
 #these functions print the title and intro of the game
 import time
 import sys
+import os
 
 def game_title():
 	print( '''
@@ -31,7 +32,7 @@ Your plans for the wall and the future of America is in jeopardy.
 It is being threatened by the likes of Hillary Clinton. You need to beat
 her in the final debate to gain the sway of the voters.
       
-To defeat a foe like crooked Hillary Clinton at the debate, you
+To defeat a foe like Crooked Hillary Clinton at the debate, you
 need all the help you can get.
 
 You need to move around the map and collect items that will grant you special
@@ -109,32 +110,31 @@ def execute_trump_wins():
 
 def execute_trump_wins_too_much():
     os.system("TrumpWin.wav")
-    os.system("HillaryLaugh.wav")
 
     print('''
     \n\n\n\n\t\t\t Y O U - W I N \n\n\n\n\t\t\t
     Congratulations MR TRUMP. The White House is yours.
     A new era begins for the United States. .''')
 
+    time.sleep(2.0)
     textexc='''
     ******BOOOM******
     Y O U   H A V E  B E E N  K I L L E D
 
     It appears your overwhelming success had forced Crooked Hillary Clinton 
-    to hire I.S. mercenaries for your execution.
+    to hire ISIS mercenaries for your execution.
     \n\n\n\n\t\t\t Game--Over \n\n\n\n\t\t\t'''
 
     for char in textexc:
       sys.stdout.write(char)
       sys.stdout.flush()
       time.sleep(0.020)
-    #He gets assassinated on the doorstep by ISIS mercenaries hired by Hillary
+    
+    os.system("HillaryLaugh.wav")
     
 def execute_hillary_wins():
 
   print('''\n\n\n\n\t\t\t Game--Over \n\n\n\n\t\t\t''')
-  print('''You let Crooked Hillary Clinton Win! Once again those scummy political types
+  print('''You let Crooked Hillary Clinton Win! Once again one of those scummy political types
     has the country in its grasp! You Failed America!''')
-    #play music (need music) and print ascii art
-  print()#delete this print statementafter adding music and ascii
         
