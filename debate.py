@@ -100,7 +100,7 @@ believe you will get rid of all terrorists. You gained 800,000 votes.''',
 }
 
 response_anthem = {
-'full response':'Sing the national anthem, harmonising with yourself.',
+'full response':'*Sing the national anthem, harmonising with yourself.*',
 'regular result':'The audience starts to sing along! You gained 750,000 votes.',
 'fit result':'''The audience starts to sing along, though eventually the sound of sobbing takes over.
 Probably because it was so beautiful. You gained 1,000,000 votes.''',

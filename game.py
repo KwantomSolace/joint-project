@@ -8,7 +8,7 @@ from gameparser import *
 from debate import *
 import random
 
-
+game_over = False
 
 def list_of_items(items):
     """This function takes a list of items (see items.py for the definition) and
@@ -330,7 +330,7 @@ The moderator asks his first question.''')
 
     print()
     for debate_round in range(1, 7):
-        question = questions[random.randint(0, len(questions))]
+        question = questions[random.randint(0, len(questions)-1)]
         print('QUESTION: ' + question['moderator'])
         print('HILLARY RESPONDS: ' + question['hillary'])
         print()
@@ -419,14 +419,17 @@ The moderator asks his first question.''')
         inventory.append(item_key)
     else:
         print('You lost the debate, and Hillary became president. Welp.')
+        game_over = True
+        
         
 
 # This is the entry point of our program
 def main():
-    game_title()
-    game_intro()
+    '''game_title()
+    game_intro()'''
+    print()
     
-    while True:
+    while not game_over:
         print_room(current_room)
         if current_room == rooms['Bar'] and not item_satans_number in inventory:
             print('''You go over to the bar and ask for a drink. Satan recognises you and says it’s
@@ -442,7 +445,14 @@ number, telling you to call him whenever you need his help.”''')
             
         # Execute the player's command
         execute_command(command)
-
+        if current_room == rooms['House']:
+            game_over = True
+    
+    if current_room == rooms['House']:
+        #wins
+        #play music and show ascii art
+    else:
+        #play music and show ascii art
 
 
 # Are we being run as a script? If so, run main().
