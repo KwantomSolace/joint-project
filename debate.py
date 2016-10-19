@@ -5,7 +5,7 @@ from random import shuffle
 import os
 from game import game_over
 
-def votes_to_string():
+def votes_to_string():#puts commas in the right places
     global votes
     votes_as_string = ''
     character_number = 1
@@ -29,7 +29,7 @@ def debate():
     global game_over
     print('''In the debate, the moderator will ask a question, Hillary will respond, then you\'ll make your response.
 Six questions will be asked.
-You earn more votes for better-fitting answers, but you cannot make the same response twice.''')
+You earn more votes for better-fitting answers, but you cannot make the same response twice.''')#Insctructions for the debate
     print()
     print('Press enter to continue.')
     wait = input()
@@ -42,7 +42,7 @@ You earn more votes for better-fitting answers, but you cannot make the same res
             your_special_attacks.append(attack)
     #Questions are asked
     print()
-    for debate_round in range(1, 7):
+    for debate_round in range(1, 7):#Moderator asks six questions, as this for loop suggests
         moderator_question = questions[random.randint(0, len(questions)-1)]
         print('QUESTION: ' + moderator_question['moderator'])
         print('HILLARY RESPONDS: ' + moderator_question['hillary'])
@@ -56,13 +56,13 @@ You earn more votes for better-fitting answers, but you cannot make the same res
         while not response_made:
             print('You can say one of the following:')
             menu_number = 1
-            for response in responses:
+            for response in responses:#this loop goes through the available responses and prints them out to create a menu
                 print(str(menu_number) + ') ' + response['full response'])
                 menu_number += 1
             print('Which option would you like to choose? Please enter a number.')
             player_input = input('> ')
-            try:
-                if int(player_input)>0 and int(player_input)<=len(responses):
+            try:#this try and except prevents crashes from happening if user inputs wacky responses
+                if int(player_input)>0 and int(player_input)<=len(responses):#if the player's input is between 1 and the amount of responses there are, it is valid input
                   player_response = responses[int(player_input)-1]
                   response_made = True
                 else:
@@ -75,7 +75,7 @@ You earn more votes for better-fitting answers, but you cannot make the same res
                 print('THE QUESTION WAS: ' + moderator_question['moderator'])
                 print('HILLARY RESPONDED: ' + moderator_question['hillary'])
                 print()
-        fitting_response = False
+        fitting_response = False#we need to check if the response fits the question
         for question in player_response['fitting questions']:
             if question == moderator_question:
               fitting_response = True
@@ -92,7 +92,7 @@ You earn more votes for better-fitting answers, but you cannot make the same res
         if moderator_question in questions:
             questions.remove(moderator_question)
         print()
-    #Special attack time
+    #Special attack opportunity follows
     print('The questions are over.')
     if len(your_special_attacks)>1:
           print('You can perform two special attacks!')
@@ -127,7 +127,7 @@ You earn more votes for better-fitting answers, but you cannot make the same res
         print(your_special_attacks[0]['result'])
         votes += your_special_attacks[int(player_input)-1]['votes']
         print()
-    ####THIS DOES NOT EXECUTE    
+    ####THIS DOES NOT EXECUTE   
     print('The debate is over.')
     print('You ended with ' + votes_to_string() + ' votes.')
     print()
@@ -185,6 +185,8 @@ question_gun = {'moderator':'What will you do about the gun issue?',
 questions = [question_poverty, question_president, question_immigration, question_changes, question_inspiration, question_climate, question_favourite, question_personal, question_gun]
 
 #13 responses
+#information for each response is what the actual response is, how everyone reacts if the response does not fit the question, how everyone reacts if the response does fit the question,
+#what questions fit the response, how many votes the player gets if the response does not fit the question, and how many votes the player gets if the response does fit the question
 response_taxes = {
 'full response':'LOWER TAXES!!!!!! *ahem*ForTheRich*ahem*',
 'regular result':'The crowd applauds. You gained 500,000 votes.',
@@ -315,6 +317,8 @@ response_people = {
 responses = [response_taxes, response_man, response_wall, response_locker_room, response_great, response_guns, response_anthem, response_card, response_noises, response_jfk, response_abuse, response_climate, response_people]
 
 #4 potential special attacks
+#info for each special attack inclues what the actual action is, what happens when the action is performed, how many votes the player gets, and what item the player needs
+#to have in the inventory in order to make the special attack
 spatk_eagle = {
     'option':'use the bald eagle',
     'result':'''You open your suit jacket and release the bald eagle. It swoops around
