@@ -53,7 +53,7 @@ We wish you the best of luck!
 
   print()
   print('Press enter to continue.')
-  wait = input()
+  wait = input('> ')
 
 def execute_trump_wins():
   print('''
@@ -113,17 +113,17 @@ def execute_trump_wins_too_much():
 
     print('''
     \n\n\n\n\t\t\t Y O U - W I N \n\n\n\n\t\t\t
-    Congratulations MR TRUMP. The White House is yours.
-    A new era begins for the United States. .''')
+ Congratulations, Mr. Trump. The White House is yours.
+      A new era begins for the United States. .''')
 
     time.sleep(2.0)
     textexc='''
-    ******BOOOM******
-    Y O U   H A V E  B E E N  K I L L E D
+                     ******BOOOM******
+           Y O U   H A V E  B E E N  K I L L E D
 
-    It appears your overwhelming success had forced Crooked Hillary Clinton 
-    to hire ISIS mercenaries for your execution.
-    \n\n\n\n\t\t\t Game--Over \n\n\n\n\t\t\t'''
+It appears your overwhelming success had forced Crooked Hillary Clinton 
+         to hire ISIS mercenaries for your execution.
+          \n\n\n\n\t\t\t Game--Over \n\n\n\n\t\t\t'''
 
     for char in textexc:
       sys.stdout.write(char)

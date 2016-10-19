@@ -342,7 +342,7 @@ Six questions will be asked.
 You earn more votes for better-fitting answers, but you cannot make the same response twice.''')#Insctructions for the debate
     print()
     print('Press enter to continue.')
-    wait = input()
+    wait = input('> ')
     print('The moderator asks his first question.''')
 
     shuffle(responses)
@@ -453,7 +453,7 @@ You earn more votes for better-fitting answers, but you cannot make the same res
     room_debate["image"] = ""
     print()
     print('Press enter to continue.')
-    wait = input()
+    wait = input('> ')
 
 def votes_to_string():#puts commas in the right places
     global votes
@@ -481,7 +481,7 @@ def main():
             previous_room = current_room["name"]#ie. the ASCII art only appears if the player changes rooms
         if current_room == rooms['Bar'] and not item_satans_number in inventory and item_money in inventory:#this executes after you first enter the bar with money in your inventory, and after the room details are displayed
             print('Press enter to continue.')
-            wait = input()
+            wait = input('> ')
             print('''You go over to the bar and slap down $20 for the finest drink on the menu. Satan
 recognises you and says it's on the house. The two of you chat until you finish drinking,
 then he gives you his number, telling you to call him whenever you need his help.''')
