@@ -25,7 +25,7 @@ his arm around a young attractive female. You know this is
 some useful dirt that could be used against Hillary, so you
 take a picture.""",
 
-    "exits": {"right":"Satan's Bar"},
+    "exits": {"right":"Bar"},
 
     "items": []
 }
