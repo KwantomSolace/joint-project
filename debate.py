@@ -24,9 +24,13 @@ def debate():
     After the questions are asked, Trump can do one or two special attacks, depending on if he has the corres if he has the corresponding item in his inventory
     The player is judged for how many votes they accumulated.
     '''
-    global current_room
     global votes
-    print (current_room['description'])
+    print('''The bright lights cause you to squint as you walk to
+your podium. Once your eyes adjust, you see just how vast and
+wild the audience is. There are stars and stripes everywhere,
+and someone seems to have brought a grill to make burgers.
+People are riding around on their Walmart mobility
+scooters, complete with monster truck tyres.''')
     print()
     print('''In the debate, the moderator will ask a question, Hillary will respond, then you\'ll make your response.
 Six questions will be asked.
@@ -113,11 +117,12 @@ You earn more votes for better-fitting answers, but you cannot make the same res
                           if player_response == spatk_satan:
                               os.system("Hillarylaugh.wav")
                           print(your_special_attacks[int(player_input)-1]['result'])
+                          print()
                           votes += your_special_attacks[int(player_input)-1]['votes']
                           your_special_attacks.remove(your_special_attacks[int(player_input)-1])
                           response_made = True
-                        else:
-                            print('That didn\'t make sense.')
+                      else:
+                          print('That didn\'t make sense.')
                   except:
                       print('That didn\'t make sense.')
     else:
@@ -126,8 +131,9 @@ You earn more votes for better-fitting answers, but you cannot make the same res
         print()
         print(your_special_attacks[0]['result'])
         votes += your_special_attacks[int(player_input)-1]['votes']
+        print()
     #Debate is over
-    print()    
+        
     print('The debate is over.')
     print('You ended with ' + votes_to_string() + ' votes.')
     print()
@@ -245,12 +251,12 @@ believe you will get rid of all terrorists. You gained 800,000 votes.''',
 
 response_anthem = {
 'full response':'*Sing the national anthem, harmonising with yourself.*',
-'regular result':'The audience starts to sing along! You gained 750,000 votes.',
+'regular result':'The audience starts to sing along! You gained 500,000 votes.',
 'fit result':'''The audience starts to sing along, though eventually the sound of sobbing takes over.
-Probably because it was so beautiful. You gained 1,000,000 votes.''',
+Probably because it was so beautiful. You gained 750,000 votes.''',
 'fitting questions':[question_favourite, question_president], 
-'regular votes':750000,
-'fit votes':1000000
+'regular votes':500000,
+'fit votes':750000
 }
 
 response_card = {
@@ -286,10 +292,10 @@ response_abuse = {
 'full response':'Bill Clinton has actually abused women, and Hillary has bullied, attacked, shamed and intimidated his victims.',
 'regular result':'''That was a little out-of-the-blue (no pun initially intended, as Democrats are represented
 by the colour blue) but the crowd goes with it. You gained 100,000 votes.''',
-'fit result':'Burn, Hill! A million of her supporters switch sides and now will vote for you.',
+'fit result':'Burn, Hill! 750,000 of her supporters switch sides and now will vote for you.',
 'fitting questions':[question_inspiration], 
 'regular votes':100000,
-'fit votes':1000000
+'fit votes':750000
 }
 
 response_climate = {
