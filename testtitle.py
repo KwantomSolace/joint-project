@@ -37,6 +37,7 @@ def game_intro():
       need all the help you can get, we wish you the best of luck! '''
   for char in text:
           sys.stdout.write(char)
+          sys.stdout.flush()
           time.sleep(0.036)
         
  
