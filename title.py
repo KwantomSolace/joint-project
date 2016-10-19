@@ -1,8 +1,6 @@
-#this function prints the title of the game
+#these functions print the title and intro of the game
 import time
 import sys
-
-
 
 def game_title():
 	print( '''
@@ -38,13 +36,3 @@ def game_intro():
   for char in text:
           sys.stdout.write(char)
           time.sleep(0.036)
-        
- 
-
-
-
-game_title()
-
-game_intro()
-
-input('>')

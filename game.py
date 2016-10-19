@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 
+from title import *
 from map import rooms
 from player import *
 from items import *
@@ -422,8 +423,9 @@ The moderator asks his first question.''')
 
 # This is the entry point of our program
 def main():
-
-    # Main game loop
+    game_title()
+    game_intro()
+    
     while True:
         print_room(current_room)
         if current_room == rooms['Bar'] and not item_satans_number in inventory:
