@@ -203,7 +203,7 @@ angry and appears to now be a lot more distracted than before.  You gain
 spatk_money = {
     'option':'Use your million dollars',
     'result':'''You make it rain! Money floods the stage from the ceiling, you look over to
-Hillary. She’s not impressed but the crowd go wild. You gain 1,000,000 votes.''',
+Hillary. She's not impressed but the crowd go wild. You gain 1,000,000 votes.''',
     'votes':1000000,
     'item':item_money
 }

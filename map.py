@@ -89,11 +89,11 @@ room_office = {
     "name": "the Trump Office",
 
     "description":
-    """You walk into the trump office, it’s a
+    """You walk into the trump office, it's a
 humongous room full of mirrors. You frequently use
 this room to practice your debates, making sure you
 always look good from every angle. You look yourself
-up and down in one of the mirrors, you’re looking
+up and down in one of the mirrors, you're looking
 hot as always.""",
 
     "exits": {"north":"Vault","east":"Tower"},

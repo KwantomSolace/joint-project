@@ -180,10 +180,7 @@ def execute_go(direction):
         inventory.append(item_photo)
         return
     if move(current_room["exits"], direction) == rooms['Bar'] and not item_satans_number in inventory:
-        print('''You go over to the bar and ask for a drink. Satan recognises you
-and says it’s on the house. The two of you chat until you finish
-drinking, then he gives you his number, telling you to call him
-whenever you need his help.”''')
+        print('''You go over to the bar and ask for a drink. Satan recognises you \nand says it's on the house. The two of you chat until you finish\ndrinking, then he gives you his number, telling you to call him\nwhenever you need his help.''')
         inventory.append(item_satans_number)
         current_room = move(current_room["exits"], direction)
         

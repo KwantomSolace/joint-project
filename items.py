@@ -14,7 +14,7 @@ item_satans_number = {
 
     "description":
     """You go over to the bar and ask for a drink. Satan
-recognises you and says it’s on the house. The two of you chat until
+recognises you and says it's on the house. The two of you chat until
 you finish drinking, then he gives you his number, telling
 you to call him whenever you need his help."""
 }
