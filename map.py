@@ -47,7 +47,9 @@ walls of the rooms, they all look like they are up to no good.""",
 }
 
 room_booths = {
-"name": "the booths at Satan's Bar",
+    "image":"",
+
+    "name": "the booths at Satan's Bar",
 
     "description":
     """In a dark corner of Satan's Bar you see Bill Clinton

@@ -125,7 +125,6 @@ You earn more votes for better-fitting answers, but you cannot make the same res
         print(your_special_attacks[0]['result'])
         votes += your_special_attacks[int(player_input)-1]['votes']
         print()
-    #Debate is over
         
     print('The debate is over.')
     print('You ended with ' + votes_to_string() + ' votes.')
