@@ -419,7 +419,7 @@ You earn more votes for better-fitting answers, but you cannot make the same res
                   player_input = input('> ')
                   try:
                       if int(player_input)>0 and int(player_input)<menu_number:
-                          if player_response == spatk_satan:
+                          if your_special_attacks[int(player_input)-1] == spatk_satan:
                               os.system("Hillarylaugh.wav")
                           print(your_special_attacks[int(player_input)-1]['result'])
                           print()
@@ -508,9 +508,9 @@ then he gives you his number, telling you to call him whenever you need his help
             print_room(current_room)
             game_over = True'''
     
-    if current_room == rooms['House'] and votes<76500000:
+    if current_room == rooms['House'] and votes<76300000:
         execute_trump_wins()
-    if current_room == rooms['House'] and votes>=76500000:
+    if current_room == rooms['House'] and votes>=76300000:
         execute_trump_wins_too_much()
     else:
         execute_hillary_wins()

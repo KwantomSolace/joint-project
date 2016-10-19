@@ -55,7 +55,7 @@ We wish you the best of luck!
 
 def execute_trump_wins():
   print('''
-    ```.-:::/++ooosssssssssssssssss+-`                                     
+                                                                   ```.-:::/++ooosssssssssssssssss+-`                                     
                                                          `..-:::/+osssssyyyyyyyyhhhhhhhyhhhhhyhhhyyyo/-`                                    
                                                  `..-:/++osyhhhhddddhhhhhhhhhyyso+++//:::-..`..-::+o/-`                                     
                                           ``.-/+osyyyyhhhhhhhhhhhyso+/::-.````                                                              
@@ -114,7 +114,7 @@ def execute_trump_wins_too_much():
  Congratulations, Mr. Trump. The White House is yours.
       A new era begins for the United States. .''')
 
-    time.sleep(2.0)
+    time.sleep(5.0)
     textexc='''
                      ******BOOOM******
            Y O U   H A V E  B E E N  K I L L E D
