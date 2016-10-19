@@ -11,7 +11,7 @@ middle of the room, with bar stools placed around it. Seedy
 looking individuals sit in the booths placed against the
 walls of the rooms, they all look like they are up to no good.""",
 
-    "exits": {"north":"Tower", "left":"Booths"},
+    "exits": {"north":"Car", "left":"Booths"},
 
     "items": []
 }
@@ -101,6 +101,16 @@ hot as always.""",
     "items": []
 }
 
+room_car = {
+    "name": "Trump's limo",
+
+    "description": """Your chauffeur just picked you up.""",
+
+    "exits": {"tower":"Tower", "bar":"Bar", "debate":"Debate", "house":"House"},
+
+    "items": []
+}
+
 rooms = {
     "Bar": room_bar,
     "Booths": room_booths,
@@ -109,4 +119,5 @@ rooms = {
     "House": room_house,
     "Vault": room_vault,
     "Office": room_office,
+    "Car": room_car,
 }

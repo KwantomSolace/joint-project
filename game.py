@@ -5,6 +5,7 @@ from player import *
 from items import *
 from gameparser import *
 from images import *
+from debate import *
 
 
 
@@ -115,6 +116,8 @@ def print_menu(exits, room_items, inv_items):
     for key in inv_items:
         print("DROP " + key["id"].upper() + " to drop " + key["name"] + ".")
     
+    print("CALL to call your chauffeur.")
+
     print("What do you want to do?")
 
 
@@ -190,6 +193,11 @@ def execute_go(direction):
         print("You cannot go there.")
 
 
+def execute_call():
+    global current_room
+    current_room = rooms["Car"]
+
+
 def execute_take(item_id):
     """This function takes an item_id as an argument and moves this item from the
     list of items in the current room to the player's inventory. However, if
@@ -239,6 +247,9 @@ def execute_command(command):
             execute_go(command[1])
         else:
             print("Go where?")
+
+    if command[0] == "call":
+        execute_call()
 
     elif command[0] == "take":
         if len(command) > 1:
