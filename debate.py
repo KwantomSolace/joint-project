@@ -6,7 +6,7 @@ question_poverty = {'moderator':'How do you aim to combat poverty?',
                     }
 
 question_president = {'moderator':'Why do you think you\'ll make a good president?',
-                      'hillary':'Unlike my opponent I actually do have a great temperament *shoulder shimmies*, and I don\'t grab people by their genitalia.'
+                      'hillary':'Unlike my opponent I actually do have a great temperament *shoulder shimmies*, and I don\'t grab people by their genitals.'
                       }
 
 question_immigration = {'moderator':'How do you feel about immigration?',
@@ -72,7 +72,7 @@ response_locker_room = {
 'full response':'Come with me to a locker room and you\'ll find the answer.',
 'regular result':'Apparently that made no sense. The crowd is rather silent, except for a crying baby somewhere. You lost 200,000 votes.',
 'fit result':'''The brighter ones among your supporters cheer and explain what you mean to those poor souls who are smart enough to have
-stayed impartial in the election yet aren\'t smart enough to get the innuendo and scoff at it. You gained 500,000 votes''',
+stayed impartial in the election, yet aren\'t smart enough to get the innuendo and scoff at it. You gained 500,000 votes''',
 'fitting questions':[question_personal], 
 'regular votes':-200000,
 'fit votes':500000
@@ -123,7 +123,7 @@ response_noises = {
 'full response':'Make fart noises with your foul-smelling mouth.',
 'regular result':'\'Right,\' says the moderator. You didn\'t lose or gain votes.',
 'fit result':'''That\'s right! You don\'t need to actually use words to explain how awesome you are.
-You gained 250,000 votes by making fart noises, and your faith in humanity doesn\'t quiver.''',
+You gained 250,000 votes by making fart noises, and your faith in humanity somehow doesn\'t quiver.''',
 'fitting questions':[question_personal], 
 'regular votes':0,
 'fit votes':250000

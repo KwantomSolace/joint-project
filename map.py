@@ -31,7 +31,7 @@ take a picture.""",
 }
 
 room_debate = {
-    "name": "the Debate Room",
+    "name": "the Debate Hall",
 
     "description":
     """The bright lights cause you to squint as you walk to your podium.
@@ -106,7 +106,7 @@ room_car = {
 
     "description": """Your chauffeur just picked you up.""",
 
-    "exits": {"house":"House","debate":"Debate","bar":"Bar","tower":"Tower"},
+    "exits": {"house":"House","hall":"Debate","bar":"Bar","tower":"Tower"},
 
     "items": []
 }

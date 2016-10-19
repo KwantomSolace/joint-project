@@ -24,16 +24,17 @@ def game_intro():
   print(''' \n\n\n\n\t\t\t -- I N T R O -- \n\n\n\n ''')
   
   text='''
-        America has lost its way.. Obama has run this country to the ground!
-      We need you Mr Trump, save us, MAKE US GREAT AGAIN.
+America has lost its way.. Obama has run this country to the ground!
+We need you Mr Trump, save us, MAKE US GREAT AGAIN.
 
-      Your plans for the Wall and the Future of America is in jeopardy
-      It is being threatened by the likes of Hillary Clinton. You need to beat
-      her in the debates to gain the sway of the voters.
+Your plans for the Wall and the Future of America is in jeopardy
+It is being threatened by the likes of Hillary Clinton. You need to beat
+her in the debates to gain the sway of the voters.
       
-      To defeat a foe like Crooked Hillary Clinton at the final Debate, you
-      need all the help you can get, we wish you the best of luck! '''
+To defeat a foe like Crooked Hillary Clinton at the final Debate, you
+need all the help you can get, we wish you the best of luck!
+      '''
   for char in text:
           sys.stdout.write(char)
           sys.stdout.flush()
-          time.sleep(0.036)
+          time.sleep(0.015)

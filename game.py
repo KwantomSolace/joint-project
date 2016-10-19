@@ -5,8 +5,10 @@ from map import rooms
 from player import *
 from items import *
 from gameparser import *
+from images import *
 from debate import *
 import random
+import os
 
 game_over = False
 
@@ -42,6 +44,7 @@ def print_inventory_items(items):
 
 def print_room(room):
     # Display room name
+    print_room_img(room)
     print()
     print(room["name"].upper())
     print()
@@ -315,6 +318,8 @@ def debate():
     After the questions are asked, Trump can do one more special attack, if he has a special attack item in his inventory.
     The player is judged for how many votes they accumulated.
     '''
+    global current_room
+    global votes
     print (current_room['description'])
     print()
     print('''In the debate, the moderator will ask a question, Hillary will respond, then you\'ll make your response.
@@ -322,7 +327,6 @@ Six questions will be asked.
 You earn more votes for better-fitting answers, but you cannot make the same response twice.
 The moderator asks his first question.''')
 
-    global votes
     your_special_attacks = []
     for attack in spatks:
         if attack['item'] in inventory:
@@ -386,6 +390,8 @@ The moderator asks his first question.''')
 
             responses.remove(player_response)
         else:
+            if player_response == spatk_satan:
+                os.system("Hillarylaugh.wav")
             print(player_response['result'])
             votes += player_response['votes']
             your_special_attacks.remove(player_response)
@@ -405,36 +411,48 @@ The moderator asks his first question.''')
                 menu_number += 1
             print('Which option would you like to choose?')
             player_input = input('> ')
-            if int(player_input)>1 and int(player_input)<menu_number:
+            if int(player_input)>0 and int(player_input)<menu_number:
+                if player_response == spatk_satan:
+                    os.system("Hillarylaugh.wav")
                 print(your_special_attacks[int(player_input)-1]['result'])
                 votes += your_special_attacks[int(player_input)-1]['votes']
                 response_made = True
             else:
                 print('That didn\'t make sense.')
-        
+
+    print()    
     print('The debate is over.')
+    print('You ended with ' + votes_to_string() + ' votes.')
     print()
     if votes >= 75000000:
         print('Congratulations! You won the debate and became president. You obtained the key to the White House.')
         inventory.append(item_key)
+        current_room = rooms['Car']
     else:
-        print('You lost the debate, and Hillary became president. Welp.')
+        print('You lost the debate, as you needed at least 75,000,000 votes. Hillary became president. Welp.')
         game_over = True
+    print()
+    print('Press enter to continue.')
+    wait = input()
+    
         
         
 
-# This is the entry point of our program
 def main():
-    '''game_title()
-    game_intro()'''
+    os.system("Anthem.wav")
+    #game_title()
+    #game_intro()
     print()
+    global game_over
     
     while not game_over:
         print_room(current_room)
-        if current_room == rooms['Bar'] and not item_satans_number in inventory:
-            print('''You go over to the bar and ask for a drink. Satan recognises you and says it’s
-on the house. The two of you chat until you finish drinking, then he gives you his
-number, telling you to call him whenever you need his help.”''')
+        if current_room == rooms['Bar'] and not item_satans_number in inventory and item_money in inventory:
+            #print('Press enter to continue.')
+            #wait = input()
+            print('''You go over to the bar and slap down $20 for the finest drink on the menu. Satan
+recognises you and says it’s on the house. The two of you chat until you finish drinking,
+then he gives you his number, telling you to call him whenever you need his help.''')
             inventory.append(item_satans_number)
             print()
             
@@ -443,16 +461,18 @@ number, telling you to call him whenever you need his help.”''')
 
         command = menu(current_room["exits"], current_room["items"], inventory)
             
-        # Execute the player's command
         execute_command(command)
         if current_room == rooms['House']:
             game_over = True
     
     if current_room == rooms['House']:
-        #wins
-        #play music and show ascii art
+        #show ascii art
+        os.system("Donald trump winning.wav")
+        print()
+        #if votes>76000000, then he gets assassinated by isis mercenaries hired by hillary
     else:
         #play music and show ascii art
+        print()
 
 
 # Are we being run as a script? If so, run main().
