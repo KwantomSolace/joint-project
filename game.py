@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-from title import *
+from introendings import *
 from map import rooms
 from player import *
 from items import *

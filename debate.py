@@ -4,6 +4,7 @@ import random
 from random import shuffle
 import os
 from game import game_over
+from map import *
 
 def votes_to_string():#puts commas in the right places
     global votes
@@ -127,14 +128,13 @@ You earn more votes for better-fitting answers, but you cannot make the same res
         print(your_special_attacks[0]['result'])
         votes += your_special_attacks[int(player_input)-1]['votes']
         print()
-    ####THIS DOES NOT EXECUTE   
+  
     print('The debate is over.')
     print('You ended with ' + votes_to_string() + ' votes.')
     print()
     if votes >= 75000000:
         print('Congratulations! You won the debate and became president. You obtained the key to the White House.')
         inventory.append(item_key)
-        current_room = rooms['Car']
     else:
         print('You lost the debate, as you needed at least 75,000,000 votes. Hillary became president. Welp.')
         game_over = True
