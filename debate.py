@@ -6,7 +6,7 @@ question_poverty = {'moderator':'How do you aim to combat poverty?',
                     }
 
 question_president = {'moderator':'Why do you think you\'ll make a good president?',
-                      'hillary':'Unlike my opponent I actually do have a great temperament *shoulder shimmies*, and I don\,t grab people by their genitalia.'
+                      'hillary':'Unlike my opponent I actually do have a great temperament *shoulder shimmies*, and I don\'t grab people by their genitalia.'
                       }
 
 question_immigration = {'moderator':'How do you feel about immigration?',
@@ -22,7 +22,7 @@ question_inspiration = {'moderator':'What inspiration do you take from past pres
                         }
 
 question_climate = {'moderator':'What will you do about climate change?',
-                    'hillary':'Climate change is real, people. And it is here. The thing about science is that whether you believe in it or not, it is still the truth and everyone of us has to do something.'
+                    'hillary':'Climate change is real, people. And it is here. The thing about science is that whether you believe in it or not, it is still the truth and every one of us has to do something.'
                     }
 
 question_favourite = {'moderator':'What is your favourite thing about America?',
@@ -50,7 +50,7 @@ response_taxes = {
 }
 
 response_man = {
-'full response':'I\'m a man',
+'full response':'I\'m a man.',
 'regular result':'The crowd applauds. You gained 100,000 votes.',
 'fit result':'''The crowd starts chanting, \'Trump! Trump! Trump!\' keeping in mind that Hillary loves to
 brag she\'s a woman. You gained 750,000 votes.''',
@@ -151,7 +151,7 @@ Democrats are represented by blue) but the crowd goes with it. You gained 100,00
 response_climate = {
 'full response':'Blame China. Do you see how they wear gas masks over there?',
 'regular result':'Uh, okay... People in the crowd either nod or try to hold in laughter. You didn\'t lose or gain any votes.',
-'fit result':'People yell, \'YEAH!\' You gained 750,000 votes.',
+'fit result':'People yell, \'YEAH!\' forgetting that your economy relies on China. You gained 750,000 votes.',
 'fitting questions':[question_climate], 
 'regular votes':0,
 'fit votes':750000
@@ -173,7 +173,7 @@ spatk_eagle = {
     'result':'''You open your suit jacket and release the bald eagle. It swoops around
 the debate room majestically, eventually making its way back to you and
 perching on your forearm dramatically. The crowd cheer in adoration.
-You have gained a million more votes thanks to your prestigious showmanship''',
+You have gained a million more votes thanks to your prestigious showmanship.''',
     'votes':1000000,
     'item':item_eagle
 }
@@ -195,7 +195,7 @@ spatk_photo = {
     'result':'''You take out the photograph of Bill Clinton with the attractive female.
 Hillary looks at it gritting her teeth, creating a pained smile. She looks
 angry and appears to now be a lot more distracted than before.  You gain
-750,000 votes''',
+750,000 votes.''',
     'votes':750000,
     'item':item_photo
 }

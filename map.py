@@ -49,8 +49,8 @@ room_tower = {
     "name": "the Trump Tower",
 
     "description":
-    """You enter the majestic building that is trump
-tower. Everything is pained with a sheen of gold, the
+    """You enter the majestic building that is Trump
+Tower. Everything is pained with a sheen of gold, the
 walls, the doors and the floors. Grandiose looking
 furniture fills the lobby and a golden cage meant for
 housing a bald eagle sits in the very middle of the room.""",

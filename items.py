@@ -1,7 +1,7 @@
 item_photo = {
     "id": "photo",
 
-    "name": "the photo of Bill Clinton, in a bar, with a girl",
+    "name": "the photo of Bill Clinton in a bar with a girl",
 
     "description":
     """You can't wait to show this around."""

@@ -4,8 +4,8 @@ from map import rooms
 from player import *
 from items import *
 from gameparser import *
-from images import *
 from debate import *
+import random
 
 
 
@@ -40,8 +40,6 @@ def print_inventory_items(items):
 
 
 def print_room(room):
-    # Display image of the room
-    print_room_img(room)
     # Display room name
     print()
     print(room["name"].upper())
@@ -71,7 +69,11 @@ def print_exit(direction, leads_to):
     """This function prints a line of a menu of exits. It takes a direction (the
     name of an exit) and the name of the room into which it leads (leads_to).
     """
-    print("GO " + direction.upper() + " to " + leads_to + ".")
+    global current_room
+    if not current_room == rooms['Car']:
+        print("GO " + direction.upper() + " to go to " + leads_to + ".")
+    else:
+        print("GO TO " + direction.upper() + " to go to " + leads_to + ".")
 
 
 def print_menu(exits, room_items, inv_items):
@@ -105,19 +107,16 @@ def print_menu(exits, room_items, inv_items):
 
     """
     print("You can:")
-    # Iterate over available exits
     for direction in exits:
-        # Print the exit name and where it leads to
         print_exit(direction, exit_leads_to(exits, direction))
+    global current_room
+    if not current_room == rooms['Car']:
+        for key in room_items:
+            print("TAKE " + key["id"].upper() + " to take " + key["name"] + ".")
 
-    for key in room_items:
-        print("TAKE " + key["id"].upper() + " to take " + key["name"] + ".")
-
-    for key in inv_items:
-        print("DROP " + key["id"].upper() + " to drop " + key["name"] + ".")
-    
-    print("CALL to call your chauffeur.")
-
+        for key in inv_items:
+            print("DROP " + key["id"].upper() + " to drop " + key["name"] + ".")
+    print()
     print("What do you want to do?")
 
 
@@ -147,55 +146,49 @@ def execute_go(direction):
     moving). Otherwise, it prints "You cannot go there."
     """
     global current_room
-        
-    if move(current_room["exits"], direction) == rooms['Debate'] and not (item_satans_number in inventory or item_eagle in inventory or item_money in inventory):
+
+    
+    if move(current_room["exits"], direction) == rooms['Debate'] and not (item_satans_number in inventory or item_eagle in inventory or item_money in inventory or item_photo in inventory):
         print('You are not prepared for the debate, so you cannot yet enter.')
         return
-    if move(current_room["exits"], direction) == rooms['Debate'] and (item_satans_number in inventory or item_eagle in inventory or item_money in inventory):    
+    elif move(current_room["exits"], direction) == rooms['Debate'] and (item_satans_number in inventory or item_eagle in inventory or item_money in inventory or item_photo in inventory):    
         print('You are prepared for the debate, but you only have one chance to reach 75 million votes. Proceed?')
         player_input = None
         while player_input == None:
             player_input = input('> ')
-            if normalise_input(player_input) == ('yes' or 'y' or 'yup' or 'yeah' or 'yep' or 'aye'):
+            if normalise_input(player_input)[0] == ('yes' or 'y' or 'yup' or 'yeah' or 'yep' or 'aye'):
+                current_room = move(current_room["exits"], direction)
                 debate()
-            if normalise_input(player_input) == ('no' or 'nope' or 'n'):
-                break
+                return
+            if normalise_input(player_input)[0] == ('no' or 'nope' or 'n'):
+                return
             else:
                 print('I didn\'t quite get that. Are you willing to debate?')
                 player_input == None
-                
-    if move(current_room["exits"], direction) == rooms['House'] and not item_key in inventory:
+        return     
+    elif move(current_room["exits"], direction) == rooms['House'] and not item_key in inventory:
         print('The doors to the White House are covered in chains and are padlocked. As presumed, it is a big house that is white!')
         return
-    if move(current_room["exits"], direction) == rooms['House'] and item_key in inventory:    
+    elif move(current_room["exits"], direction) == rooms['House'] and item_key in inventory:    
         print('There\'s no going back once you enter the White House. Proceed?')
         while True:
             player_input = input('> ')
-            if normalise_input(player_input) == ('yes' or 'y' or 'yup' or 'yeah' or 'yep' or 'aye'):
+            if normalise_input(player_input)[0] == ('yes' or 'y' or 'yup' or 'yeah' or 'yep' or 'aye'):
                 current_room = move(current_room["exits"], direction)
-            if normalise_input(player_input) == ('no' or 'nope' or 'n'):
-                pass
+                return
+            if normalise_input(player_input)[0] == ('no' or 'nope' or 'n'):
+                return
             else:
                 print('I didn\'t quite get that. Are you willing to enter the White House?')   
-
-    if move(current_room["exits"], direction) == rooms['Booths'] and not item_photo in inventory:
+        return
+    elif move(current_room["exits"], direction) == rooms['Booths'] and not item_photo in inventory:
         current_room = move(current_room["exits"], direction)
         inventory.append(item_photo)
         return
-    if move(current_room["exits"], direction) == rooms['Bar'] and not item_satans_number in inventory:
-        print('''You go over to the bar and ask for a drink. Satan recognises you \nand says it's on the house. The two of you chat until you finish\ndrinking, then he gives you his number, telling you to call him\nwhenever you need his help.''')
-        inventory.append(item_satans_number)
-        current_room = move(current_room["exits"], direction)
-        
     if is_valid_exit(current_room["exits"], direction):
         current_room = move(current_room["exits"], direction)
     else:
         print("You cannot go there.")
-
-
-def execute_call():
-    global current_room
-    current_room = rooms["Car"]
 
 
 def execute_take(item_id):
@@ -247,9 +240,6 @@ def execute_command(command):
             execute_go(command[1])
         else:
             print("Go where?")
-
-    if command[0] == "call":
-        execute_call()
 
     elif command[0] == "take":
         if len(command) > 1:
@@ -304,82 +294,119 @@ def move(exits, direction):
     # Next room to go to
     return rooms[exits[direction]]
 
-def debate():
-    print (room_debate['description'])
-    print('''In the debate, the moderator will ask a question, Hillary will respond, then you\'ll make your response.
-          You earn more votes for better-fitting answers, but you cannot make the same response twice. The moderator asks his first question.''')
+def votes_to_string():
+    global votes
+    votes_as_string = ''
+    character_number = 1
+    for ch in str(votes)[::-1]:
+        votes_as_string += ch
+        if character_number%3==0:
+            votes_as_string += ','
+        character_number += 1
+    return votes_as_string[::-1]
 
+def debate():
+    '''
+    This function deals with the mechanics for the debate:
+    The moderator asks six questions.
+    After the question is asked, Hillary responds.
+    Trump can respond by saying something or by using a special attack (if he has the corresponding item in his inventory).
+    After the questions are asked, Trump can do one more special attack, if he has a special attack item in his inventory.
+    The player is judged for how many votes they accumulated.
+    '''
+    print (current_room['description'])
+    print()
+    print('''In the debate, the moderator will ask a question, Hillary will respond, then you\'ll make your response.
+Six questions will be asked.
+You earn more votes for better-fitting answers, but you cannot make the same response twice.
+The moderator asks his first question.''')
+
+    global votes
     your_special_attacks = []
     for attack in spatks:
         if attack['item'] in inventory:
             your_special_attacks.append(attack)
 
+    print()
     for debate_round in range(1, 7):
-        question = questions[random.randint(0, questions.len())]
+        question = questions[random.randint(0, len(questions))]
         print('QUESTION: ' + question['moderator'])
-        print()
         print('HILLARY RESPONDS: ' + question['hillary'])
         print()
         
         player_response = None
         response_made = False
         special_attack = False
-        
+
+
+        print('You have ' + votes_to_string() + ' votes.')
+        print('You can do one of the following:')
         while not response_made:
             menu_number = 1
             for response in responses:
-                print(menu_number + ') ' + response['full response'])
+                print(str(menu_number) + ') ' + response['full response'])
                 menu_number += 1
             for spatk in your_special_attacks:
-                print(menu_number + ') ' + '(Special attack): ' + spatk['option'])
+                print(str(menu_number )+ ') ' + '(Special attack): ' + spatk['option'])
                 menu_number += 1
-            print('Which option would you like to choose?')
+            print('Which option would you like to choose? Please enter a number.')
             player_input = input('> ')
-            if player_input in range(1, responses.len()+1):
-                  player_response = responses[player_input-1]
+            try:
+                if int(player_input)>0 and int(player_input)<len(responses):
+                  player_response = responses[int(player_input)-1]
                   response_made = True
-            if player_input in range(responses.len()+1, menu_number-1):
-                  player_response = your_special_attacks[player_input-responses.len()-1]
+                elif int(player_input)>=len(responses) and int(player_input)<menu_number:
+                  player_response = your_special_attacks[int(player_input)-len(responses)-1]
                   special_attack = True
                   response_made = True
-            else:
-                  print('That didn\'t make sense.')
+                else:
+                    print('That didn\'t make sense.')
+                    print('THE QUESTION WAS: ' + question['moderator'])
+                    print('HILLARY RESPONDED: ' + question['hillary'])
+                    print()
+            except:
+                print('That didn\'t make sense.')
+                print('THE QUESTION WAS: ' + question['moderator'])
+                print('HILLARY RESPONDED: ' + question['hillary'])
+                print()
 
         if not special_attack:
             fitting_response = False
-            for question in response['fitting questions']:
+            for question in player_response['fitting questions']:
                 if question in questions:
                       fitting_response = True
                   
             if fitting_response:
-                print(response['fit result'])
-                votes += response['fit votes']
+                print(player_response['fit result'])
+                votes += player_response['fit votes']
             else:
-                print(response['regular result'])
-                votes += response['regular votes']
+                print(player_response['regular result'])
+                votes += player_response['regular votes']
 
             responses.remove(player_response)
         else:
             print(player_response['result'])
             votes += player_response['votes']
-            inventory.remove(player_response['item'])
+            your_special_attacks.remove(player_response)
                   
-        questions.remove(question)
+        if question in questions:
+            questions.remove(question)
+        print()
 
-    if your_special_attacks.len()>0:
+    if len(your_special_attacks)>0:
         print('You can perform one last special attack!')
         
         menu_number = 1
         response_made = False
         while not response_made:
             for spatk in your_special_attacks:
-                print(menu_number + ') ' + spatk['option'])
+                print(str(menu_number) + ') ' + spatk['option'])
                 menu_number += 1
             print('Which option would you like to choose?')
             player_input = input('> ')
-            if player_input in range(1, your_special_attacks.len()+1):
-                print(your_special_attacks[player_input-1]['result'])
-                votes += your_special_attacks[player_input-1]['votes']
+            if int(player_input)>1 and int(player_input)<menu_number:
+                print(your_special_attacks[int(player_input)-1]['result'])
+                votes += your_special_attacks[int(player_input)-1]['votes']
                 response_made = True
             else:
                 print('That didn\'t make sense.')
@@ -391,21 +418,26 @@ def debate():
         inventory.append(item_key)
     else:
         print('You lost the debate, and Hillary became president. Welp.')
-          
-
+        
 
 # This is the entry point of our program
 def main():
 
     # Main game loop
     while True:
-        # Display game status (room description, inventory etc.)
         print_room(current_room)
-        print_inventory_items(inventory)
+        if current_room == rooms['Bar'] and not item_satans_number in inventory:
+            print('''You go over to the bar and ask for a drink. Satan recognises you and says it’s
+on the house. The two of you chat until you finish drinking, then he gives you his
+number, telling you to call him whenever you need his help.”''')
+            inventory.append(item_satans_number)
+            print()
+            
+        if not current_room == rooms['Car']:
+            print_inventory_items(inventory)
 
-        # Show the menu with possible actions and ask the player
         command = menu(current_room["exits"], current_room["items"], inventory)
-
+            
         # Execute the player's command
         execute_command(command)
 
