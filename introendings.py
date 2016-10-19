@@ -36,20 +36,18 @@ To defeat a foe like Crooked Hillary Clinton at the debate, you
 need all the help you can get.
 
 You need to move around the map and collect items that will grant you special
-attacks that will allow you to win more votes and maybe win the election!
+attacks at the debate that will help you get more votes and maybe win the election!
 
 You have already won the hearts of 70 million registered voters, and your
-aim is to win 6,500,000 more. You can use two special attacks in the
-debate, after you respond to questions asked questions by the debate moderator.
-Go to the debate hall when you think you have collected the right special
-attacks.
+aim is to win 6,500,000 more. Go to the debate hall when you think you have
+collected the items to grant you the special attacks you want.
 
 We wish you the best of luck!
       '''
   for char in text:
           sys.stdout.write(char)
           sys.stdout.flush()
-          time.sleep(0.015)
+          time.sleep(0.011)
 
   print()
   print('Press enter to continue.')
