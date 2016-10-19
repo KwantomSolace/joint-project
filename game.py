@@ -238,9 +238,14 @@ def execute_drop(item_id):
         print("You cannot drop that.")
 
 def execute_look(item_id):
+    look_successful = False
     for item in inventory:
         if item_id == item['id']:
             print(item['description'])
+            look_successful = True
+    if not look_successful:
+        print("There is no such item.")
+        
     
 
 def execute_command(command):
