@@ -342,6 +342,8 @@ You earn more votes for better-fitting answers, but you cannot make the same res
         
         player_response = None
         response_made = False
+        special_attack = False
+
 
         print('You have ' + votes_to_string() + ' votes.')
         print('You can say one of the following:')
@@ -350,11 +352,18 @@ You earn more votes for better-fitting answers, but you cannot make the same res
             for response in responses:
                 print(str(menu_number) + ') ' + response['full response'])
                 menu_number += 1
+            for spatk in your_special_attacks:
+                print(str(menu_number )+ ') ' + '(Special attack): ' + spatk['option'])
+                menu_number += 1
             print('Which option would you like to choose? Please enter a number.')
             player_input = input('> ')
             try:
-                if int(player_input)>0 and int(player_input)<=len(responses):
+                if int(player_input)>0 and int(player_input)<len(responses):
                   player_response = responses[int(player_input)-1]
+                  response_made = True
+                elif int(player_input)>=len(responses) and int(player_input)<menu_number:
+                  player_response = your_special_attacks[int(player_input)-len(responses)-1]
+                  special_attack = True
                   response_made = True
                 else:
                     print('That didn\'t make sense.')
@@ -367,56 +376,51 @@ You earn more votes for better-fitting answers, but you cannot make the same res
                 print('HILLARY RESPONDED: ' + question['hillary'])
                 print()
 
-        
-        fitting_response = False
-        for question in player_response['fitting questions']:
-            if question in questions:
-                fitting_response = True
+        if not special_attack:
+            fitting_response = False
+            for question in player_response['fitting questions']:
+                if question in questions:
+                      fitting_response = True
                   
-        if fitting_response:
-            print(player_response['fit result'])
-            votes += player_response['fit votes']
-        else:
-            print(player_response['regular result'])
-            votes += player_response['regular votes']
+            if fitting_response:
+                print(player_response['fit result'])
+                votes += player_response['fit votes']
+            else:
+                print(player_response['regular result'])
+                votes += player_response['regular votes']
 
-        responses.remove(player_response)
+            responses.remove(player_response)
+        else:
+            if player_response == spatk_satan:
+                os.system("Hillarylaugh.wav")
+            print(player_response['result'])
+            votes += player_response['votes']
+            your_special_attacks.remove(player_response)
                   
         if question in questions:
             questions.remove(question)
         print()
 
-           ''' if player_response == spatk_satan:
-            os.system("Hillarylaugh.wav")
-        print(player_response['result'])
-        votes += player_response['votes']
-        your_special_attacks.remove(player_response)'''
-    print('You have ' + votes_to_string() + ' votes.')
-    if len(your_special_attacks)>1:
-        print('You can perform two special attacks!')
-        for special_attack_round in range(1, 3):
-            response_made = False
-            while not response_made:
-                menu_number = 1
-                for spatk in your_special_attacks:
-                    print(str(menu_number) + ') ' + spatk['option'][0].upper() + spatk['option'][1:] +'.')
-                    menu_number += 1
-                print('Which option would you like to choose?')
-                player_input = input('> ')
-                if int(player_input)>0 and int(player_input)<menu_number:
-                    if player_response == spatk_satan:
-                        os.system("Hillarylaugh.wav")
-                    print(your_special_attacks[int(player_input)-1]['result'])
-                    votes += your_special_attacks[int(player_input)-1]['votes']
-                    response_made = True
-                else:
-                    print('That didn\'t make sense.')
-    else:
-        print('You ' + your_special_attacks[0]['option'] + '.')
-        print()
-        print(your_special_attacks[0]['result'])
-        votes += your_special_attacks[int(player_input)-1]['votes']
+    if len(your_special_attacks)>0:
+        print('You have ' + votes_to_string() + ' votes.')
+        print('You can perform one last special attack!')
         
+        menu_number = 1
+        response_made = False
+        while not response_made:
+            for spatk in your_special_attacks:
+                print(str(menu_number) + ') ' + spatk['option'])
+                menu_number += 1
+            print('Which option would you like to choose?')
+            player_input = input('> ')
+            if int(player_input)>0 and int(player_input)<menu_number:
+                if player_response == spatk_satan:
+                    os.system("Hillarylaugh.wav")
+                print(your_special_attacks[int(player_input)-1]['result'])
+                votes += your_special_attacks[int(player_input)-1]['votes']
+                response_made = True
+            else:
+                print('That didn\'t make sense.')
 
     print()    
     print('The debate is over.')
@@ -465,7 +469,7 @@ then he gives you his number, telling you to call him whenever you need his help
     
     if current_room == rooms['House']:
         #show ascii art
-        os.system("Donald trump winning.wav")
+        os.system("TrumpWin.wav")
         print()
     #elif votes>=77000000, then he gets assassinated by isis mercenaries hired by hillary
     else:
