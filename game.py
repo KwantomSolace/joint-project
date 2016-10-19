@@ -8,7 +8,10 @@ from gameparser import *
 from debate import *
 import os
 
+global game_over
 game_over = False
+global debate_over
+debate_over = False
 
 def list_of_items(items):
     """This function takes a list of items (see items.py for the definition) and
@@ -147,13 +150,13 @@ def execute_go(direction):
     moving). Otherwise, it prints "You cannot go there."
     """
     global current_room
-
+    global debate_over
     try:
-        if move(current_room["exits"], direction) == rooms['Debate'] and not (item_satans_number in inventory or item_eagle in inventory or item_money in inventory or item_photo in inventory):
+        if not debate_over and move(current_room["exits"], direction) == rooms['Debate'] and not (item_satans_number in inventory or item_eagle in inventory or item_money in inventory or item_photo in inventory):
             print('You are not prepared for the debate, so you cannot yet enter.')
             print()
             return
-        elif move(current_room["exits"], direction) == rooms['Debate'] and (item_satans_number in inventory or item_eagle in inventory or item_money in inventory or item_photo in inventory):    
+        elif not debate_over and move(current_room["exits"], direction) == rooms['Debate'] and (item_satans_number in inventory or item_eagle in inventory or item_money in inventory or item_photo in inventory):    
             print('You are prepared for the debate, but you only have one chance to reach 75 million votes. Proceed?')
             player_input = None
             while player_input == None:
@@ -317,10 +320,149 @@ def move(exits, direction):
     return rooms[exits[direction]]
     
         
+def debate():
+    '''
+    This function deals with the mechanics for the debate:
+    The moderator asks six questions.
+    After the question is asked, Hillary responds.
+    Trump responds.
+    After the questions are asked, Trump can do one or two special attacks, depending on if he has the corres if he has the corresponding item in his inventory
+    The player is judged for how many votes they accumulated.
+    '''
+    global votes
+    global game_over
+    global debate_over
+    print('''In the debate, the moderator will ask a question, Hillary will respond, then you\'ll make your response.
+Six questions will be asked.
+You earn more votes for better-fitting answers, but you cannot make the same response twice.''')#Insctructions for the debate
+    print()
+    print('Press enter to continue.')
+    wait = input()
+    print('The moderator asks his first question.''')
+
+    '''shuffle(responses)
+    your_special_attacks = []
+    for attack in spatks:
+        if attack['item'] in inventory:
+            your_special_attacks.append(attack)
+    #Questions are asked
+    print()
+    for debate_round in range(1, 7):#Moderator asks six questions, as this for loop suggests
+        moderator_question = questions[random.randint(0, len(questions)-1)]
+        print('QUESTION: ' + moderator_question['moderator'])
+        print('HILLARY RESPONDS: ' + moderator_question['hillary'])
+        print()
         
+        player_response = None
+        response_made = False
+
+
+        print('You have ' + votes_to_string() + ' votes.')
+        while not response_made:
+            print('You can say one of the following:')
+            menu_number = 1
+            for response in responses:#this loop goes through the available responses and prints them out to create a menu
+                print(str(menu_number) + ') ' + response['full response'])
+                menu_number += 1
+            print('Which option would you like to choose? Please enter a number.')
+            player_input = input('> ')
+            try:#this try and except prevents crashes from happening if user inputs wacky responses
+                if int(player_input)>0 and int(player_input)<=len(responses):#if the player's input is between 1 and the amount of responses there are, it is valid input
+                  player_response = responses[int(player_input)-1]
+                  response_made = True
+                else:
+                    print('That didn\'t make sense.')
+                    print('THE QUESTION WAS: ' + moderator_question['moderator'])
+                    print('HILLARY RESPONDED: ' + moderator_question['hillary'])
+                    print()
+            except:
+                print('That didn\'t make sense.')
+                print('THE QUESTION WAS: ' + moderator_question['moderator'])
+                print('HILLARY RESPONDED: ' + moderator_question['hillary'])
+                print()
+        fitting_response = False#we need to check if the response fits the question
+        for question in player_response['fitting questions']:
+            if question == moderator_question:
+              fitting_response = True
+                  
+        if fitting_response:
+            print(player_response['fit result'])
+            votes += player_response['fit votes']
+        else:
+            print(player_response['regular result'])
+            votes += player_response['regular votes']
+
+        responses.remove(player_response)
+                  
+        if moderator_question in questions:
+            questions.remove(moderator_question)
+        print()
+    #Special attack opportunity follows
+    print('The questions are over.')
+    if len(your_special_attacks)>1:
+          print('You can perform two special attacks!')
+          print()
+          for special_attack_round in range(1, 3):
+              print('You have ' + votes_to_string() + ' votes.')
+              response_made = False
+              while not response_made:
+                  menu_number = 1
+                  for spatk in your_special_attacks:
+                      print(str(menu_number) + ') ' + spatk['option'][0].upper() + spatk['option'][1:] +'.')
+                      menu_number += 1
+                  print('Which option would you like to choose?')
+                  player_input = input('> ')
+                  try:
+                      if int(player_input)>0 and int(player_input)<menu_number:
+                          if player_response == spatk_satan:
+                              os.system("Hillarylaugh.wav")
+                          print(your_special_attacks[int(player_input)-1]['result'])
+                          print()
+                          votes += your_special_attacks[int(player_input)-1]['votes']
+                          your_special_attacks.remove(your_special_attacks[int(player_input)-1])
+                          response_made = True
+                      else:
+                          print('That didn\'t make sense.')
+                  except:
+                      print('That didn\'t make sense.')
+    else:
+        print('You have ' + votes_to_string() + ' votes.')
+        print('You ' + your_special_attacks[0]['option'] + '.')
+        print()
+        print(your_special_attacks[0]['result'])
+        votes += your_special_attacks[int(player_input)-1]['votes']
+        print()
+        '''
+    votes = 71000000
+    debate_over = True
+    print('The debate is over.')
+    print('You ended with ' + votes_to_string() + ' votes.')
+    print()
+    if votes >= 75000000:
+        print('Congratulations! You won the debate and became president. You obtained the key to the White House.')
+        inventory.append(item_key)
+    else:
+        print('You lost the debate, as you needed at least 75,000,000 votes. Hillary became president. Welp.')
+        game_over = True
+    room_debate["description"] = '''The debate hall is now void of life. You spot a few tattered American flags on the floor.'''
+    room_debate["image"] = ""
+    print()
+    print('Press enter to continue.')
+    wait = input()
+
+def votes_to_string():#puts commas in the right places
+    global votes
+    votes_as_string = ''
+    character_number = 1
+    for ch in str(votes)[::-1]:
+        votes_as_string += ch
+        if character_number%3==0:
+            votes_as_string += ','
+        character_number += 1
+    return votes_as_string[::-1]
 
 def main():
-    os.system("Anthem.wav")
+    #os.system("Anthem.wav")
     #game_title()
     #game_intro()
     print()
@@ -328,16 +470,16 @@ def main():
     global previous_room
     previous_room = ''
     
-    while not game_over:
+    '''while not game_over:
         if previous_room != current_room["name"]:#this if statement and the code within prevents the room ASCII art from reappearing if the player
             print_room(current_room)#is only picking up, dropping, or looking at an item in the room
             previous_room = current_room["name"]#ie. the ASCII art only appears if the player changes rooms
         if current_room == rooms['Bar'] and not item_satans_number in inventory and item_money in inventory:#this executes after you first enter the bar with money in your inventory, and after the room details are displayed
             print('Press enter to continue.')
             wait = input()
-            print('''You go over to the bar and slap down $20 for the finest drink on the menu. Satan
+            print(''You go over to the bar and slap down $20 for the finest drink on the menu. Satan
 recognises you and says it's on the house. The two of you chat until you finish drinking,
-then he gives you his number, telling you to call him whenever you need his help.''')
+then he gives you his number, telling you to call him whenever you need his help.'')
             inventory.append(item_satans_number)
             print()
             
@@ -346,6 +488,16 @@ then he gives you his number, telling you to call him whenever you need his help
 
         command = menu(current_room["exits"], current_room["items"], inventory)
             
+        execute_command(command)
+        if current_room == rooms['House']:#The game ends once Trump goes to the white house with the key in his inventory, or if Hillary wins the debate
+            print_room(current_room)
+            game_over = True'''
+
+    inventory.append(item_money)
+    inventory.append(item_eagle)
+    while not game_over:
+        print_room(current_room)#is only picking up, dropping, or looking at an item in the room
+        command = menu(current_room["exits"], current_room["items"], inventory)
         execute_command(command)
         if current_room == rooms['House']:#The game ends once Trump goes to the white house with the key in his inventory, or if Hillary wins the debate
             print_room(current_room)
