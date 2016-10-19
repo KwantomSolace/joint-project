@@ -342,10 +342,10 @@ then he gives you his number, telling you to call him whenever you need his help
             
         execute_command(command)
         if current_room == rooms['House']:
+            print_room(current_room)
             game_over = True
     
     if current_room == rooms['House']:
-        print_room(current_room)
         os.system("TrumpWin.wav")
         #delay and show other ascii art. OR write short description of life after Trump
     #elif votes>=77000000:
