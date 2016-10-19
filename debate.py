@@ -127,7 +127,7 @@ You earn more votes for better-fitting answers, but you cannot make the same res
         print(your_special_attacks[0]['result'])
         votes += your_special_attacks[int(player_input)-1]['votes']
         print()
-        
+    ####THIS DOES NOT EXECUTE    
     print('The debate is over.')
     print('You ended with ' + votes_to_string() + ' votes.')
     print()
@@ -188,10 +188,10 @@ questions = [question_poverty, question_president, question_immigration, questio
 response_taxes = {
 'full response':'LOWER TAXES!!!!!! *ahem*ForTheRich*ahem*',
 'regular result':'The crowd applauds. You gained 500,000 votes.',
-'fit result':'The crowd revs the engines of their mobility scooters! You gained 1,000,000 votes.',
+'fit result':'The crowd revs the engines of their mobility scooters! You gained 800,000 votes.',
 'fitting questions': [question_poverty, question_changes], 
 'regular votes':500000,
-'fit votes': 1000000
+'fit votes': 800000
 }
 
 response_man = {
@@ -239,10 +239,10 @@ response_guns = {
 'regular result':'''Though that was a rather random comment, everyone goes crazy at the mention of Islam.
 You inwardly smile at the commotion, as you have gained 250,000 votes.''',
 'fit result':'''OH, SNAP! The mention of Islam reawakens the fear people have about ISIS and makes them
-believe you will get rid of all terrorists. You gained 800,000 votes.''',
+believe you will get rid of all terrorists. You gained 750,000 votes.''',
 'fitting questions':[question_gun], 
 'regular votes':250000,
-'fit votes':800000
+'fit votes':750000
 }
 
 response_anthem = {
@@ -320,8 +320,8 @@ spatk_eagle = {
     'result':'''You open your suit jacket and release the bald eagle. It swoops around
 the debate room majestically, eventually making its way back to you and
 perching on your forearm dramatically. The crowd cheer in adoration.
-You have gained a million more votes thanks to your prestigious showmanship.''',
-    'votes':1000000,
+You have gained 800,000 more votes thanks to your prestigious showmanship.''',
+    'votes':800000,
     'item':item_eagle
 }
 
@@ -332,17 +332,18 @@ celling of the debate room and a hole appears from the ground, a few
 centimetres from where Hillary is standing. Her eyes glow a dark red
 colour, she starts to laugh and convulse uncontrollably. Satan appears
 to have possessed her and she is creeping out the audience and viewers
-at home. Two million of her supporters end up voting for you.''',
-    'votes':2000000,
+at home. A million of her supporters end up voting for you.''',
+    'votes':1000000,
     'item':item_satans_number
 }
 
 spatk_photo = {
     'option':'present the photo of Bill Clinton and the girl',
     'result':'''You take out the photograph of Bill Clinton with the attractive female.
-Hillary looks at it gritting her teeth, creating a pained smile. She looks
-angry and appears to now be a lot more distracted than before.  You gain
-750,000 votes.''',
+The audience gasps and starts whispering to each other. The moderator
+clears his throat. Hillary looks at it gritting her teeth, creating
+a pained smile. She looks angry and appears to now be a lot more
+distracted than before.  You gain 750,000 votes.''',
     'votes':750000,
     'item':item_photo
 }
@@ -350,8 +351,8 @@ angry and appears to now be a lot more distracted than before.  You gain
 spatk_money = {
     'option':'use your million dollars',
     'result':'''You make it rain! Money floods the stage from the ceiling, you look over to
-Hillary. She's not impressed but the crowd go wild. You gain 1,000,000 votes.''',
-    'votes':1000000,
+Hillary. She's not impressed but the crowd go wild. You gain 800,000 votes.''',
+    'votes':800000,
     'item':item_money
 }
 
