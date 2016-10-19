@@ -106,7 +106,7 @@ room_car = {
 
     "description": """Your chauffeur just picked you up.""",
 
-    "exits": {"north":"House","east":"Debate","south":"Bar","west":"Tower"},
+    "exits": {"house":"House","debate":"Debate","bar":"Bar","tower":"Tower"},
 
     "items": []
 }
