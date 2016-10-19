@@ -42,7 +42,7 @@ def print_inventory_items(items):
 
 
 def print_room(room):
-    print_room_img(room)
+    print(room["image"])
     print()
     print(room["name"].upper())
     print()
