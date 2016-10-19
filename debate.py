@@ -186,7 +186,7 @@ questions = [question_poverty, question_president, question_immigration, questio
 response_taxes = {
 'full response':'LOWER TAXES!!!!!! *ahem*ForTheRich*ahem*',
 'regular result':'The crowd applauds. You gained 500,000 votes.',
-'fit result':'The crowd roars! You gained 1,000,000 votes.',
+'fit result':'The crowd revs the engines of their mobility scooters! You gained 1,000,000 votes.',
 'fitting questions': [question_poverty, question_changes], 
 'regular votes':500000,
 'fit votes': 1000000
@@ -225,7 +225,8 @@ response_great = {
 'full response':'Make America great again.',
 'regular result':'''Your fans are no longer entertained by that phrase, and the people who don\'t
 support you roll their eyes. You didn\'t lose or gain any votes.''',
-'fit result':'The people thinking about voting for you like hearing that phrase again. You gained 250,000 votes.',
+'fit result':'''The people thinking about voting for you like hearing that phrase again and convince their
+friends that you will make some serious changes during your time in office. You gained 250,000 votes.''',
 'fitting questions':[question_favourite, question_changes], 
 'regular votes':0,
 'fit votes': 250000
@@ -283,8 +284,8 @@ response_jfk = {
 
 response_abuse = {
 'full response':'Bill Clinton has actually abused women, and Hillary has bullied, attacked, shamed and intimidated his victims.',
-'regular result':'''That was a little out-of-the-blue (no pun initially intended, as
-Democrats are represented by blue) but the crowd goes with it. You gained 100,000 votes.''',
+'regular result':'''That was a little out-of-the-blue (no pun initially intended, as Democrats are represented
+by the colour blue) but the crowd goes with it. You gained 100,000 votes.''',
 'fit result':'Burn, Hill! A million of her supporters switch sides and now will vote for you.',
 'fitting questions':[question_inspiration], 
 'regular votes':100000,

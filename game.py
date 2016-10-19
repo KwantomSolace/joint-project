@@ -158,11 +158,11 @@ def execute_go(direction):
         player_input = None
         while player_input == None:
             player_input = input('> ')
-            if normalise_input(player_input)[0] == ('yes' or 'y' or 'yup' or 'yeah' or 'yep' or 'aye'):
+            if normalise_input(player_input)[0] == 'yes' or normalise_input(player_input)[0] == 'y' or normalise_input(player_input)[0] == 'yeah' or normalise_input(player_input)[0] == 'yep' or normalise_input(player_input)[0] == 'yup' or normalise_input(player_input)[0] == 'aye':
                 current_room = move(current_room["exits"], direction)
                 debate()
                 return
-            if normalise_input(player_input)[0] == ('no' or 'nope' or 'n'):
+            if normalise_input(player_input)[0] == 'no' or normalise_input(player_input)[0] == 'n' or normalise_input(player_input)[0] == 'nope':
                 return
             else:
                 print('I didn\'t quite get that. Are you willing to debate?')
@@ -175,10 +175,10 @@ def execute_go(direction):
         print('There\'s no going back once you enter the White House. Proceed?')
         while True:
             player_input = input('> ')
-            if normalise_input(player_input)[0] == ('yes' or 'y' or 'yup' or 'yeah' or 'yep' or 'aye'):
+            if normalise_input(player_input)[0] == 'yes'  or normalise_input(player_input)[0] == 'y' or normalise_input(player_input)[0] == 'yeah' or normalise_input(player_input)[0] == 'yep' or normalise_input(player_input)[0] == 'yup' or normalise_input(player_input)[0] == 'aye':
                 current_room = move(current_room["exits"], direction)
                 return
-            if normalise_input(player_input)[0] == ('no' or 'nope' or 'n'):
+            if normalise_input(player_input)[0] == 'no' or normalise_input(player_input)[0] == 'n' or normalise_input(player_input)[0] == 'nope':
                 return
             else:
                 print('I didn\'t quite get that. Are you willing to enter the White House?')   
@@ -295,147 +295,6 @@ def move(exits, direction):
 
     # Next room to go to
     return rooms[exits[direction]]
-
-def votes_to_string():
-    global votes
-    votes_as_string = ''
-    character_number = 1
-    for ch in str(votes)[::-1]:
-        votes_as_string += ch
-        if character_number%3==0:
-            votes_as_string += ','
-        character_number += 1
-    return votes_as_string[::-1]
-
-def debate():
-    '''
-    This function deals with the mechanics for the debate:
-    The moderator asks six questions.
-    After the question is asked, Hillary responds.
-    Trump can respond by saying something or by using a special attack (if he has the corresponding item in his inventory).
-    After the questions are asked, Trump can do one more special attack, if he has a special attack item in his inventory.
-    The player is judged for how many votes they accumulated.
-    '''
-    global current_room
-    global votes
-    print (current_room['description'])
-    print()
-    print('''In the debate, the moderator will ask a question, Hillary will respond, then you\'ll make your response.
-Six questions will be asked.
-You earn more votes for better-fitting answers, but you cannot make the same response twice.''')
-    print()
-    print('Press enter to continue.')
-    wait = input()
-    print('The moderator asks his first question.''')
-
-    your_special_attacks = []
-    for attack in spatks:
-        if attack['item'] in inventory:
-            your_special_attacks.append(attack)
-
-    print()
-    for debate_round in range(1, 7):
-        question = questions[random.randint(0, len(questions)-1)]
-        print('QUESTION: ' + question['moderator'])
-        print('HILLARY RESPONDS: ' + question['hillary'])
-        print()
-        
-        player_response = None
-        response_made = False
-        special_attack = False
-
-
-        print('You have ' + votes_to_string() + ' votes.')
-        print('You can say one of the following:')
-        while not response_made:
-            menu_number = 1
-            for response in responses:
-                print(str(menu_number) + ') ' + response['full response'])
-                menu_number += 1
-            for spatk in your_special_attacks:
-                print(str(menu_number )+ ') ' + '(Special attack): ' + spatk['option'])
-                menu_number += 1
-            print('Which option would you like to choose? Please enter a number.')
-            player_input = input('> ')
-            try:
-                if int(player_input)>0 and int(player_input)<len(responses):
-                  player_response = responses[int(player_input)-1]
-                  response_made = True
-                elif int(player_input)>=len(responses) and int(player_input)<menu_number:
-                  player_response = your_special_attacks[int(player_input)-len(responses)-1]
-                  special_attack = True
-                  response_made = True
-                else:
-                    print('That didn\'t make sense.')
-                    print('THE QUESTION WAS: ' + question['moderator'])
-                    print('HILLARY RESPONDED: ' + question['hillary'])
-                    print()
-            except:
-                print('That didn\'t make sense.')
-                print('THE QUESTION WAS: ' + question['moderator'])
-                print('HILLARY RESPONDED: ' + question['hillary'])
-                print()
-
-        if not special_attack:
-            fitting_response = False
-            for question in player_response['fitting questions']:
-                if question in questions:
-                      fitting_response = True
-                  
-            if fitting_response:
-                print(player_response['fit result'])
-                votes += player_response['fit votes']
-            else:
-                print(player_response['regular result'])
-                votes += player_response['regular votes']
-
-            responses.remove(player_response)
-        else:
-            if player_response == spatk_satan:
-                os.system("Hillarylaugh.wav")
-            print(player_response['result'])
-            votes += player_response['votes']
-            your_special_attacks.remove(player_response)
-                  
-        if question in questions:
-            questions.remove(question)
-        print()
-
-    if len(your_special_attacks)>0:
-        print('You have ' + votes_to_string() + ' votes.')
-        print('You can perform one last special attack!')
-        
-        menu_number = 1
-        response_made = False
-        while not response_made:
-            for spatk in your_special_attacks:
-                print(str(menu_number) + ') ' + spatk['option'])
-                menu_number += 1
-            print('Which option would you like to choose?')
-            player_input = input('> ')
-            if int(player_input)>0 and int(player_input)<menu_number:
-                if player_response == spatk_satan:
-                    os.system("Hillarylaugh.wav")
-                print(your_special_attacks[int(player_input)-1]['result'])
-                votes += your_special_attacks[int(player_input)-1]['votes']
-                response_made = True
-            else:
-                print('That didn\'t make sense.')
-
-    print()    
-    print('The debate is over.')
-    print('You ended with ' + votes_to_string() + ' votes.')
-    print()
-    if votes >= 75000000:
-        print('Congratulations! You won the debate and became president. You obtained the key to the White House.')
-        inventory.append(item_key)
-        current_room = rooms['Car']
-    else:
-        print('You lost the debate, as you needed at least 75,000,000 votes. Hillary became president. Welp.')
-        game_over = True
-    print()
-    print('Press enter to continue.')
-    wait = input()
     
         
         
@@ -450,8 +309,8 @@ def main():
     while not game_over:
         print_room(current_room)
         if current_room == rooms['Bar'] and not item_satans_number in inventory and item_money in inventory:
-            #print('Press enter to continue.')
-            #wait = input()
+            print('Press enter to continue.')
+            wait = input()
             print('''You go over to the bar and slap down $20 for the finest drink on the menu. Satan
 recognises you and says it’s on the house. The two of you chat until you finish drinking,
 then he gives you his number, telling you to call him whenever you need his help.''')
@@ -471,10 +330,11 @@ then he gives you his number, telling you to call him whenever you need his help
         #show ascii art
         os.system("TrumpWin.wav")
         print()
-    #elif votes>=77000000, then he gets assassinated by isis mercenaries hired by hillary
+    #elif votes>=77000000:
+        #He gets assassinated by isis mercenaries hired by hillary
     else:
         #play music and show ascii art
-        print()
+        print()#delete this print statementafter adding music and ascii
 
 
 # Are we being run as a script? If so, run main().

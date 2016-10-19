@@ -11,7 +11,7 @@ middle of the room, with bar stools placed around it. Seedy
 looking individuals sit in the booths placed against the
 walls of the rooms, they all look like they are up to no good.""",
 
-    "exits": {"north":"Car", "left":"Booths"},
+    "exits": {"out":"Car", "left":"Booths"},
 
     "items": []
 }
@@ -20,10 +20,10 @@ room_booths = {
 "name": "the booths at Satan's Bar",
 
     "description":
-    """In a dark corner of Satan's Bar you see Bill Clinton with
-his arm around a young attractive female. You know this is
-some useful dirt that could be used against Hillary, so you
-take a picture.""",
+    """In a dark corner of Satan's Bar you see Bill Clinton
+with his arm around a young attractive female. You know this
+is some useful dirt that could be used against Hillary, so
+you take a picture.""",
 
     "exits": {"right":"Bar"},
 
@@ -34,13 +34,14 @@ room_debate = {
     "name": "the Debate Hall",
 
     "description":
-    """The bright lights cause you to squint as you walk to your podium.
-Once your eyes adjust, you see just how vast and wild the audience is.
-There are stars and stripes everywhere, and someone seems to have brought
-a grill to make burgers. People are riding around on their Walmart mobility
+    """The bright lights cause you to squint as you walk to
+your podium. Once your eyes adjust, you see just how vast and
+wild the audience is. There are stars and stripes everywhere,
+and someone seems to have brought a grill to make burgers.
+People are riding around on their Walmart mobility
 scooters, complete with monster truck tyres.""",
 
-    "exits": {"west":"Car"},
+    "exits": {"out":"Car"},
 
     "items": []
 }
@@ -50,12 +51,12 @@ room_tower = {
 
     "description":
     """You enter the majestic building that is Trump
-Tower. Everything is pained with a sheen of gold, the
-walls, the doors and the floors. Grandiose looking
-furniture fills the lobby and a golden cage meant for
+Tower. Everything is painted with gold: the walls, the
+doors, the floors, the ceiling... Grandiose, shimmering
+furniture fills the lobby, and a golden cage meant for
 housing a bald eagle sits in the very middle of the room.""",
 
-    "exits": {"east":"Car","left":"Office"},
+    "exits": {"out":"Car","left":"Office"},
 
     "items": [item_eagle]
 }
@@ -65,7 +66,7 @@ room_house = {
 
     "description":'',
 
-    "exits": {"south":"Car"},
+    "exits": {"out":"Car"},
 
     "items": []
 }
@@ -80,7 +81,7 @@ pieces of furniture. A money sofa sits in the far
 corner and a wall-to-wall flat screen money TV is placed in
 front of it.""",
 
-    "exits": {"right":"Office"},
+    "exits": {"up":"Tower"},
 
     "items": [item_money]
 }
@@ -96,7 +97,7 @@ always look good from every angle. You look yourself
 up and down in one of the mirrors, you're looking
 hot as always.""",
 
-    "exits": {"left":"Vault","right":"Tower"},
+    "exits": {"down":"Vault","right":"Tower"},
 
     "items": []
 }
