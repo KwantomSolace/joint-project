@@ -185,8 +185,8 @@ spatk_eagle = {
     'result':'''You open your suit jacket and release the bald eagle. It swoops around
 the debate room majestically, eventually making its way back to you and
 perching on your forearm dramatically. The crowd cheer in adoration.
-You have gained 800,000 more votes thanks to your prestigious showmanship.''',
-    'votes':800000,
+You have gained a million more votes thanks to your prestigious showmanship.''',
+    'votes':1000000,
     'item':item_eagle
 }
 
@@ -197,8 +197,8 @@ celling of the debate room and a hole appears from the ground, a few
 centimetres from where Hillary is standing. Her eyes glow a dark red
 colour, she starts to laugh and convulse uncontrollably. Satan appears
 to have possessed her and she is creeping out the audience and viewers
-at home. A million of her supporters end up voting for you.''',
-    'votes':1000000,
+at home. 1,500,000 of her supporters end up voting for you.''',
+    'votes':1500000,
     'item':item_satans_number
 }
 
@@ -208,16 +208,16 @@ spatk_photo = {
 The audience gasps and starts whispering to each other. The moderator
 clears his throat. Hillary looks at it gritting her teeth, creating
 a pained smile. She looks angry and appears to now be a lot more
-distracted than before.  You gain 750,000 votes.''',
-    'votes':750000,
+distracted than before.  You gain 900,000 votes.''',
+    'votes':900000,
     'item':item_photo
 }
 
 spatk_money = {
     'option':'use your million dollars',
     'result':'''You make it rain! Money floods the stage from the ceiling, you look over to
-Hillary. She's not impressed but the crowd go wild. You gain 800,000 votes.''',
-    'votes':800000,
+Hillary. She's not impressed but the crowd go wild. You gain a million votes.''',
+    'votes':1000000,
     'item':item_money
 }
 

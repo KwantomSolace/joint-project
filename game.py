@@ -14,6 +14,9 @@ global debate_over
 debate_over = False
 
 def list_of_items(items):
+    """This function takes a list of items (see items.py for the definition) and
+    returns a comma-separated list of item names (as a string).
+    """
     items_list = []
     for key in items:
         items_list.append(key["name"])
@@ -21,11 +24,19 @@ def list_of_items(items):
 
 
 def print_room_items(room):
+    """This function takes a room as an input and nicely displays a list of items
+    found in this room (followed by a blank line). If there are no items in
+    the room, nothing is printed. 
+    """
     if room["items"]:
         print("There is " + list_of_items(room["items"]) + " here.")
 
 
 def print_inventory_items(items):
+    """This function takes a list of inventory items and displays it nicely, in a
+    manner similar to print_room_items(). The only difference is in formatting:
+    print "You have ..." instead of "There is ... here.".
+    """
     if (len(items) != 0):
         print()
         print("You have " + list_of_items(items) + ".")
@@ -43,10 +54,24 @@ def print_room(room):
     
 
 def exit_leads_to(exits, direction):
+    """This function takes a dictionary of exits and a direction (a particular
+    exit taken from this dictionary). It returns the name of the room into which
+    this exit leads. For example:
+
+    >>> exit_leads_to(rooms["Reception"]["exits"], "south")
+    "MJ and Simon's room"
+    >>> exit_leads_to(rooms["Reception"]["exits"], "east")
+    "your personal tutor's office"
+    >>> exit_leads_to(rooms["Tutor"]["exits"], "west")
+    'Reception'
+    """
     return rooms[exits[direction]]["name"]
 
 
 def print_exit(direction, leads_to):
+    """This function prints a line of a menu of exits. It takes a direction (the
+    name of an exit) and the name of the room into which it leads (leads_to).
+    """
     global current_room
     if not current_room == rooms['Car']:
         print("GO " + direction.upper() + " to go to " + leads_to + ".")
@@ -55,6 +80,35 @@ def print_exit(direction, leads_to):
 
 
 def print_menu(exits, room_items, inv_items):
+    """This function displays the menu of available actions to the player. The
+    argument exits is a dictionary of exits as exemplified in map.py. The
+    arguments room_items and inv_items are the items lying around in the room
+    and carried by the player respectively. The menu should, for each exit,
+    call the function print_exit() to print the information about each exit in
+    the appropriate format. The room into which an exit leads is obtained
+    using the function exit_leads_to(). Then, it should print a list of commands
+    related to items: for each item in the room print
+
+    "TAKE <ITEM ID> to take <item name>."
+
+    and for each item in the inventory print
+
+    "DROP <ITEM ID> to drop <item name>."
+
+    For example, the menu of actions available at the Reception may look like this:
+
+    You can:
+    GO EAST to your personal tutor's office.
+    GO WEST to the parking lot.
+    GO SOUTH to MJ and Simon's room.
+    TAKE BISCUITS to take a pack of biscuits.
+    TAKE HANDBOOK to take a student handbook.
+    DROP ID to drop your id card.
+    DROP LAPTOP to drop your laptop.
+    DROP MONEY to drop your money.
+    What do you want to do?
+
+    """
     print("You can:")
     for direction in exits:
         print_exit(direction, exit_leads_to(exits, direction))
@@ -71,10 +125,30 @@ def print_menu(exits, room_items, inv_items):
 
 
 def is_valid_exit(exits, chosen_exit):
+    """This function checks, given a dictionary "exits" (see map.py) and
+    a players's choice "chosen_exit" whether the player has chosen a valid exit.
+    It returns True if the exit is valid, and False otherwise. Assume that
+    the name of the exit has been normalised by the function normalise_input().
+    For example:
+
+    >>> is_valid_exit(rooms["Reception"]["exits"], "south")
+    True
+    >>> is_valid_exit(rooms["Reception"]["exits"], "up")
+    False
+    >>> is_valid_exit(rooms["Parking"]["exits"], "west")
+    False
+    >>> is_valid_exit(rooms["Parking"]["exits"], "east")
+    True
+    """
     return chosen_exit in exits
 
 
 def execute_go(direction):
+    """This function, given the direction (e.g. "south") updates the current room
+    to reflect the movement of the player if the direction is a valid exit
+    (and prints the name of the room into which the player is
+    moving). Otherwise, it prints "You cannot go there."
+    """
     global current_room
     global debate_over
     try:
@@ -132,6 +206,11 @@ def execute_go(direction):
 
 
 def execute_take(item_id):
+    """This function takes an item_id as an argument and moves this item from the
+    list of items in the current room to the player's inventory. However, if
+    there is no such item in the room, this function prints
+    "You cannot take that."
+    """
     found = False
     for key in current_room["items"]:
         if item_id == key["id"]:
@@ -144,6 +223,10 @@ def execute_take(item_id):
     
 
 def execute_drop(item_id):
+    """This function takes an item_id as an argument and moves this item from the
+    player's inventory to list of items in the current room. However, if there is
+    no such item in the inventory, this function prints "You cannot drop that."
+    """
     dropped = False
     for key in inventory:
         if item_id == key["id"]:
@@ -161,11 +244,18 @@ def execute_look(item_id):
             print(item['description'])
             look_successful = True
     if not look_successful:
-        print("That didn't work.")
+        print("There is no such item.")
         
     
 
 def execute_command(command):
+    """This function takes a command (a list of words as returned by
+    normalise_input) and, depending on the type of action (the first word of
+    the command: "go", "take", or "drop"), executes either execute_go,
+    execute_take, or execute_drop, supplying the second word as the argument.
+
+    """
+
     if 0 == len(command):
         return
 
@@ -198,20 +288,44 @@ def execute_command(command):
 
 
 def menu(exits, room_items, inv_items):
+    """This function, given a dictionary of possible exits from a room, and a list
+    of items found in the room and carried by the player, prints the menu of
+    actions using print_menu() function. It then prompts the player to type an
+    action. The players's input is normalised using the normalise_input()
+    function before being returned.
+
+    """
+
+    # Display menu
     print_menu(exits, room_items, inv_items)
 
+    # Read player's input
     user_input = input("> ")
 
+    # Normalise the input
     normalised_user_input = normalise_input(user_input)
 
     return normalised_user_input
 
 
 def move(exits, direction):
+    """This function returns the room into which the player will move if, from a
+    dictionary "exits" of avaiable exits, they choose to move towards the exit
+    with the name given by "direction". For example:
+
+    >>> move(rooms["Reception"]["exits"], "south") == rooms["Admins"]
+    True
+    >>> move(rooms["Reception"]["exits"], "east") == rooms["Tutor"]
+    True
+    >>> move(rooms["Reception"]["exits"], "west") == rooms["Office"]
+    False
+    """
+
+    # Next room to go to
     return rooms[exits[direction]]
     
         
-def debate():#this function deals with the mechanics for the debate
+def debate():
     '''
     This function deals with the mechanics for the debate:
     The moderator asks six questions.
@@ -228,7 +342,7 @@ Six questions will be asked.
 You earn more votes for better-fitting answers, but you cannot make the same response twice.''')#Insctructions for the debate
     print()
     print('Press enter to continue.')
-    wait = input()
+    wait = input('> ')
     print('The moderator asks his first question.''')
 
     shuffle(responses)
@@ -339,7 +453,7 @@ You earn more votes for better-fitting answers, but you cannot make the same res
     room_debate["image"] = ""
     print()
     print('Press enter to continue.')
-    wait = input()
+    wait = input('> ')
 
 def votes_to_string():#puts commas in the right places
     global votes
@@ -367,7 +481,7 @@ def main():
             previous_room = current_room["name"]#ie. the ASCII art only appears if the player changes rooms
         if current_room == rooms['Bar'] and not item_satans_number in inventory and item_money in inventory:#this executes after you first enter the bar with money in your inventory, and after the room details are displayed
             print('Press enter to continue.')
-            wait = input()
+            wait = input('> ')
             print('''You go over to the bar and slap down $20 for the finest drink on the menu. Satan
 recognises you and says it's on the house. The two of you chat until you finish drinking,
 then he gives you his number, telling you to call him whenever you need his help.''')
@@ -384,7 +498,7 @@ then he gives you his number, telling you to call him whenever you need his help
             print_room(current_room)
             game_over = True
 
-    '''inventory.append(item_money)#meant for testing game. if this block is uncommented, comment while loop above
+    '''inventory.append(item_money)#meant for testing game. if this is uncommented, comment block above
     inventory.append(item_eagle)
     while not game_over:
         print_room(current_room)#is only picking up, dropping, or looking at an item in the room
@@ -396,7 +510,7 @@ then he gives you his number, telling you to call him whenever you need his help
     
     if current_room == rooms['House'] and votes<76500000:
         execute_trump_wins()
-    elif current_room == rooms['House'] and votes>=76500000:
+    if current_room == rooms['House'] and votes>=76500000:
         execute_trump_wins_too_much()
     else:
         execute_hillary_wins()
