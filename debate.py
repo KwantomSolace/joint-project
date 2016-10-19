@@ -3,6 +3,7 @@ from player import *
 import random
 from random import shuffle
 import os
+from game import game_over
 
 def votes_to_string():
     global votes
@@ -25,6 +26,7 @@ def debate():
     The player is judged for how many votes they accumulated.
     '''
     global votes
+    global game_over
     print('''In the debate, the moderator will ask a question, Hillary will respond, then you\'ll make your response.
 Six questions will be asked.
 You earn more votes for better-fitting answers, but you cannot make the same response twice.''')
@@ -312,6 +314,7 @@ response_people = {
 
 responses = [response_taxes, response_man, response_wall, response_locker_room, response_great, response_guns, response_anthem, response_card, response_noises, response_jfk, response_abuse, response_climate, response_people]
 
+#4 potential special attacks
 spatk_eagle = {
     'option':'use the bald eagle',
     'result':'''You open your suit jacket and release the bald eagle. It swoops around
