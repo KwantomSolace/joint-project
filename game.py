@@ -345,11 +345,11 @@ then he gives you his number, telling you to call him whenever you need his help
             game_over = True
     
     if current_room == rooms['House']:
-        #show ascii art
+        print_room(current_room)
         os.system("TrumpWin.wav")
-        print()
+        #delay and show other ascii art. OR write short description of life after Trump
     #elif votes>=77000000:
-        #He gets assassinated by isis mercenaries hired by hillary
+        #He gets assassinated on the doorstep by ISIS mercenaries hired by Hillary
     else:
         #play music and show ascii art
         print()#delete this print statementafter adding music and ascii

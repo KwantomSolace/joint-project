@@ -114,7 +114,7 @@ def print_room_img(room):
 		print("                                                                       .:-s:+         . `           o+h+-`                                  ")
 		print("                                                                       `:-yy::        .            -+s:/-                                   ")
 		print("                                                                        `-:+o:/       `           :ohys-                                    ")
-		print("                                                                        .:ss:y+/:`             `:+++//s:                                    ")
+		print("                                                                        .:ss:y+/:`             `:+++//s:    (this is a mirror)              ")
 		print("                                                                        .:y+oy+o++::-.`   `.:-/syy+hyd.+                                    ")
 		print("                                                                         ..-:y/sso++osoo+oosso/osss/od-o:                                   ")
 		print("                                                                             .-y+oy:-/++-/smh`hh:+s+ys:/o`                                  ")
