@@ -28,7 +28,6 @@ def print_room_items(room):
     """
     if room["items"]:
         print("There is " + list_of_items(room["items"]) + " here.")
-        print()
 
 
 def print_inventory_items(items):
@@ -37,6 +36,7 @@ def print_inventory_items(items):
     print "You have ..." instead of "There is ... here.".
     """
     if (len(items) != 0):
+        print()
         print("You have " + list_of_items(items) + ".")
         print()
 
@@ -325,9 +325,13 @@ def main():
     #game_intro()
     print()
     global game_over
+    global previous_room
+    previous_room = ''
     
     while not game_over:
-        print_room(current_room)
+        if previous_room != current_room["name"]:
+            print_room(current_room)
+            previous_room = current_room["name"]
         if current_room == rooms['Bar'] and not item_satans_number in inventory and item_money in inventory:
             print('Press enter to continue.')
             wait = input()
