@@ -82,7 +82,7 @@ response_great = {
 'full response':'Make America great again.',
 'regular result':'''Your fans are no longer entertained by that phrase, and the people who don\'t
 support you roll their eyes. You didn\'t lose or gain any votes.''',
-'fit result':'The people thinking about voting for you love hearing that phrase again! You gained 250,000 votes.',
+'fit result':'The people thinking about voting for you like hearing that phrase again. You gained 250,000 votes.',
 'fitting questions':[question_favourite, question_changes], 
 'regular votes':0,
 'fit votes': 250000
@@ -169,7 +169,7 @@ response_people = {
 responses = [response_taxes, response_man, response_wall, response_locker_room, response_great, response_guns, response_anthem, response_card, response_noises, response_jfk, response_abuse, response_climate, response_people]
 
 spatk_eagle = {
-    'option':'Use bald eagle',
+    'option':'use the bald eagle',
     'result':'''You open your suit jacket and release the bald eagle. It swoops around
 the debate room majestically, eventually making its way back to you and
 perching on your forearm dramatically. The crowd cheer in adoration.
@@ -179,7 +179,7 @@ You have gained a million more votes thanks to your prestigious showmanship.''',
 }
 
 spatk_satan = {
-    'option':'Call Satan',
+    'option':'call Satan',
     'result':'''You take out your phone and give Satan a call. A dark cloud covers the
 celling of the debate room and a hole appears from the ground, a few
 centimetres from where Hillary is standing. Her eyes glow a dark red
@@ -191,7 +191,7 @@ at home. Two million of her supporters end up voting for you.''',
 }
 
 spatk_photo = {
-    'option':'Present photo of Bill Clinton',
+    'option':'present the photo of Bill Clinton and the girl',
     'result':'''You take out the photograph of Bill Clinton with the attractive female.
 Hillary looks at it gritting her teeth, creating a pained smile. She looks
 angry and appears to now be a lot more distracted than before.  You gain
@@ -201,7 +201,7 @@ angry and appears to now be a lot more distracted than before.  You gain
 }
 
 spatk_money = {
-    'option':'Use your million dollars',
+    'option':'use your million dollars',
     'result':'''You make it rain! Money floods the stage from the ceiling, you look over to
 Hillary. She's not impressed but the crowd go wild. You gain 1,000,000 votes.''',
     'votes':1000000,
