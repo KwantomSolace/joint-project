@@ -31,7 +31,7 @@ you take a picture.""",
 }
 
 room_debate = {
-    "name": "the Debate Hall",
+    "name": "the debate hall",
 
     "description":
     """The bright lights cause you to squint as you walk to

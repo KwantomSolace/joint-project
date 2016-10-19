@@ -89,7 +89,7 @@ You earn more votes for better-fitting answers, but you cannot make the same res
         responses.remove(player_response)
                   
         if moderator_question in questions:
-            questions.remove(question)
+            questions.remove(moderator_question)
         print()
 
     print('The questions are over.')
@@ -111,6 +111,7 @@ You earn more votes for better-fitting answers, but you cannot make the same res
                           os.system("Hillarylaugh.wav")
                       print(your_special_attacks[int(player_input)-1]['result'])
                       votes += your_special_attacks[int(player_input)-1]['votes']
+                      your_special_attacks.remove(int(player_input)-1)
                       response_made = True
                   else:
                       print('That didn\'t make sense.')
@@ -346,4 +347,4 @@ Hillary. She's not impressed but the crowd go wild. You gain 1,000,000 votes.'''
     'item':item_money
 }
 
-spatks = [spatk_eagle, spatk_satan, spatk_photo, spatk_money]
+spatks = shuffle([spatk_eagle, spatk_satan, spatk_photo, spatk_money])
