@@ -114,9 +114,10 @@ def print_menu(exits, room_items, inv_items):
     if not current_room == rooms['Car']:
         for key in room_items:
             print("TAKE " + key["id"].upper() + " to take " + key["name"] + ".")
-
         for key in inv_items:
             print("DROP " + key["id"].upper() + " to drop " + key["name"] + ".")
+        for key in inv_items:
+            print("LOOK AT " + key["id"].upper() + " to look at " + key["name"] + ".")
     print()
     print("What do you want to do?")
 
@@ -158,15 +159,16 @@ def execute_go(direction):
         player_input = None
         while player_input == None:
             player_input = input('> ')
-            if normalise_input(player_input)[0] == 'yes' or normalise_input(player_input)[0] == 'y' or normalise_input(player_input)[0] == 'yeah' or normalise_input(player_input)[0] == 'yep' or normalise_input(player_input)[0] == 'yup' or normalise_input(player_input)[0] == 'aye':
+            if len(normalise_input(player_input))>0 and (normalise_input(player_input)[0] == 'yes' or normalise_input(player_input)[0] == 'y' or normalise_input(player_input)[0] == 'yeah' or normalise_input(player_input)[0] == 'yep' or normalise_input(player_input)[0] == 'yup' or normalise_input(player_input)[0] == 'aye'):
                 current_room = move(current_room["exits"], direction)
                 debate()
                 return
-            if normalise_input(player_input)[0] == 'no' or normalise_input(player_input)[0] == 'n' or normalise_input(player_input)[0] == 'nope':
+            if len(normalise_input(player_input))>0 and (normalise_input(player_input)[0] == 'no' or normalise_input(player_input)[0] == 'n' or normalise_input(player_input)[0] == 'nope'):
+                print()
                 return
             else:
                 print('I didn\'t quite get that. Are you willing to debate?')
-                player_input == None
+                player_input = None
         return     
     elif move(current_room["exits"], direction) == rooms['House'] and not item_key in inventory:
         print('The doors to the White House are covered in chains and are padlocked. As presumed, it is a big house that is white!')
@@ -174,15 +176,19 @@ def execute_go(direction):
         return
     elif move(current_room["exits"], direction) == rooms['House'] and item_key in inventory:    
         print('There\'s no going back once you enter the White House. Proceed?')
-        while True:
+        player_input = None
+        while player_input == None:
             player_input = input('> ')
-            if normalise_input(player_input)[0] == 'yes'  or normalise_input(player_input)[0] == 'y' or normalise_input(player_input)[0] == 'yeah' or normalise_input(player_input)[0] == 'yep' or normalise_input(player_input)[0] == 'yup' or normalise_input(player_input)[0] == 'aye':
+            if len(normalise_input(player_input))>0 and (normalise_input(player_input)[0] == 'yes'  or normalise_input(player_input)[0] == 'y' or normalise_input(player_input)[0] == 'yeah' or normalise_input(player_input)[0] == 'yep' or normalise_input(player_input)[0] == 'yup' or normalise_input(player_input)[0] == 'aye'):
+                print()
                 current_room = move(current_room["exits"], direction)
                 return
-            if normalise_input(player_input)[0] == 'no' or normalise_input(player_input)[0] == 'n' or normalise_input(player_input)[0] == 'nope':
+            if len(normalise_input(player_input))>0 and (normalise_input(player_input)[0] == 'no' or normalise_input(player_input)[0] == 'n' or normalise_input(player_input)[0] == 'nope'):
+                print()
                 return
             else:
-                print('I didn\'t quite get that. Are you willing to enter the White House?')   
+                print('I didn\'t quite get that. Are you willing to enter the White House?')
+                player_input = None
         return
     elif move(current_room["exits"], direction) == rooms['Booths'] and not item_photo in inventory:
         current_room = move(current_room["exits"], direction)
@@ -225,6 +231,11 @@ def execute_drop(item_id):
             break
     if not dropped:
         print("You cannot drop that.")
+
+def execute_look(item_id):
+    for item in inventory:
+        if item_id == item['id']:
+            print(item['description'])
     
 
 def execute_command(command):
@@ -255,7 +266,13 @@ def execute_command(command):
             execute_drop(command[1])
         else:
             print("Drop what?")
-
+            
+    elif command[0] == "look":
+        if len(command) > 1:
+            execute_look(command[1])
+        else:
+            print("Look at what?")
+        
     else:
         print("This makes no sense.")
 
