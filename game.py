@@ -508,10 +508,11 @@ then he gives you his number, telling you to call him whenever you need his help
             print_room(current_room)
             game_over = True'''
     
-    if current_room == rooms['House'] and votes>=75000000:
-        execute_trump_wins()
-    elif current_room == rooms['House'] and votes>=76300000:
-        execute_trump_wins_too_much()
+    if current_room == rooms['House']:
+        if votes>=75000000 and votes<76300000:
+            execute_trump_wins()
+        if votes>=76300000:
+            execute_trump_wins_too_much()
     else:
         execute_hillary_wins()
 
