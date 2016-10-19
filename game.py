@@ -508,12 +508,15 @@ then he gives you his number, telling you to call him whenever you need his help
             print_room(current_room)
             game_over = True'''
     
-    if current_room == rooms['House'] and votes<76300000:
+    if current_room == rooms['House'] and votes>=75000000:
         execute_trump_wins()
-    if current_room == rooms['House'] and votes>=76300000:
+    elif current_room == rooms['House'] and votes>=76300000:
         execute_trump_wins_too_much()
     else:
         execute_hillary_wins()
+
+    print('Press any key to quit.')
+    wait = input('> ')
 
 
 # Are we being run as a script? If so, run main().

@@ -39,8 +39,8 @@ You need to move around the map and collect items that will grant you special
 attacks at the debate that will help you get more votes and maybe win the election!
 
 You have already won the hearts of 70 million registered voters, and your
-aim is to win 6,500,000 more. Go to the debate hall when you think you have
-collected the items to grant you the special attacks you want.
+aim is to win 5,000,000 more at the debate. Go to the debate hall when you think
+you have collected the items to grant you the special attacks you want.
 
 We wish you the best of luck!
       '''
