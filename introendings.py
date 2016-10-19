@@ -53,3 +53,17 @@ We wish you the best of luck!
   print()
   print('Press enter to continue.')
   wait = input()
+
+def execute_trump_wins():
+    os.system("TrumpWin.wav")
+    #program delay and print ascii art. OR write short description of life after Trump
+
+def execute_trump_wins_too_much():
+    os.system("TrumpWin.wav")
+    os.system("HillaryLaugh.wav")
+    #He gets assassinated on the doorstep by ISIS mercenaries hired by Hillary
+    
+def execute_hillary_wins():
+    #play music (need music) and print ascii art
+    print()#delete this print statementafter adding music and ascii
+        

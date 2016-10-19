@@ -329,10 +329,10 @@ def main():
     previous_room = ''
     
     while not game_over:
-        if previous_room != current_room["name"]:
-            print_room(current_room)
-            previous_room = current_room["name"]
-        if current_room == rooms['Bar'] and not item_satans_number in inventory and item_money in inventory:
+        if previous_room != current_room["name"]:#this if statement and the code within prevents the room ASCII art from reappearing if the player
+            print_room(current_room)#is only picking up, dropping, or looking at an item in the room
+            previous_room = current_room["name"]#ie. the ASCII art only appears if the player changes rooms
+        if current_room == rooms['Bar'] and not item_satans_number in inventory and item_money in inventory:#this executes after you first enter the bar with money in your inventory, and after the room details are displayed
             print('Press enter to continue.')
             wait = input()
             print('''You go over to the bar and slap down $20 for the finest drink on the menu. Satan
@@ -341,24 +341,22 @@ then he gives you his number, telling you to call him whenever you need his help
             inventory.append(item_satans_number)
             print()
             
-        if not current_room == rooms['Car']:
+        if not current_room == rooms['Car']:#the inventory is not displayed if Trump is in his limousine
             print_inventory_items(inventory)
 
         command = menu(current_room["exits"], current_room["items"], inventory)
             
         execute_command(command)
-        if current_room == rooms['House']:
+        if current_room == rooms['House']:#The game ends once Trump goes to the white house with the key in his inventory, or if Hillary wins the debate
             print_room(current_room)
             game_over = True
     
     if current_room == rooms['House']:
-        os.system("TrumpWin.wav")
-        #program delay and print ascii art. OR write short description of life after Trump
-    #elif votes>=77000000:
-        #He gets assassinated on the doorstep by ISIS mercenaries hired by Hillary
+        execute_trump_wins()
+    elif votes>=77000000:
+        execute_trump_wins_too_much()
     else:
-        #play music (need music) and print ascii art
-        print()#delete this print statementafter adding music and ascii
+        execute_hillary_wins()
 
 
 # Are we being run as a script? If so, run main().
