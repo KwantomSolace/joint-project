@@ -4,6 +4,7 @@ from map import rooms
 from player import *
 from items import *
 from gameparser import *
+from images import *
 
 
 
@@ -38,6 +39,8 @@ def print_inventory_items(items):
 
 
 def print_room(room):
+    # Display image of the room
+    print_room_img(room)
     # Display room name
     print()
     print(room["name"].upper())
