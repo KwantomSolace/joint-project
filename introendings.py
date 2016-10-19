@@ -36,7 +36,7 @@ To defeat a foe like Crooked Hillary Clinton at the debate, you
 need all the help you can get.
 
 You need to move around the map and collect items that will grant you special
-attacks that will allow you to win more votes and maybe win the elction!
+attacks that will allow you to win more votes and maybe win the election!
 
 You have already won the hearts of 70 million registered voters, and your
 aim is to win 5 million more. You can use two special attacks in the
