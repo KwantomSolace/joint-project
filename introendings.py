@@ -87,8 +87,8 @@ def execute_trump_wins():
     yMd .dMN/ +Mm. :MN-   .dMh`     `mMo         hMh    /NM+  mMh::::::- `smy+:-:oMM/ +MN` :MM+::/+dMd. -MM+::::::. -MM:  `sMMMs     hMh    
     ody  `y:  /dh` :dd.    .hds     `hd+         sds     /dd: yddddddddy` -oydmmmhs-  /dd` -ddddddhs/`  -ddddddddd+ -dd-    -hd+     sds)''')
    
-    os.system("TrumpWin.wav")
-    textwin= '''
+  os.system("TrumpWin.wav")
+  textwin= '''
     \n\n\n\n\t\t\t Y O U - W I N \n\n\n\n\t\t\t
     Congratulations MR TRUMP. The White House is yours.
     A new era begins for the United States. .
@@ -100,10 +100,10 @@ def execute_trump_wins():
 
     '''
 
-    for char in textwin:
-      sys.stdout.write(char)
-      sys.stdout.flush()
-      time.sleep(0.020)
+  for char in textwin:
+    sys.stdout.write(char)
+    sys.stdout.flush()
+    time.sleep(0.020)
 
     #program delay and print ascii art. OR write short description of life after Trump
 
@@ -124,7 +124,7 @@ def execute_trump_wins_too_much():
     to hire I.S. mercenaries for your execution.
     \n\n\n\n\t\t\t Game--Over \n\n\n\n\t\t\t'''
 
-     for char in textexc:
+    for char in textexc:
       sys.stdout.write(char)
       sys.stdout.flush()
       time.sleep(0.020)
@@ -136,5 +136,5 @@ def execute_hillary_wins():
   print('''You let Crooked Hillary Clinton Win! Once again those scummy political types
     has the country in its grasp! You Failed America!''')
     #play music (need music) and print ascii art
-    print()#delete this print statementafter adding music and ascii
+  print()#delete this print statementafter adding music and ascii
         
