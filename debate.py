@@ -1,6 +1,7 @@
 from items import *
 from player import *
 import random
+from random import shuffle
 import os
 
 def votes_to_string():
@@ -35,11 +36,12 @@ You earn more votes for better-fitting answers, but you cannot make the same res
     wait = input()
     print('The moderator asks his first question.''')
 
+    shuffle(responses)
     your_special_attacks = []
     for attack in spatks:
         if attack['item'] in inventory:
             your_special_attacks.append(attack)
-
+    #Questions are asked
     print()
     for debate_round in range(1, 7):
         moderator_question = questions[random.randint(0, len(questions)-1)]
@@ -91,7 +93,7 @@ You earn more votes for better-fitting answers, but you cannot make the same res
         if moderator_question in questions:
             questions.remove(moderator_question)
         print()
-
+    #Special attack time
     print('The questions are over.')
     if len(your_special_attacks)>1:
           print('You can perform two special attacks!')
@@ -106,14 +108,17 @@ You earn more votes for better-fitting answers, but you cannot make the same res
                       menu_number += 1
                   print('Which option would you like to choose?')
                   player_input = input('> ')
-                  if int(player_input)>0 and int(player_input)<menu_number:
-                      if player_response == spatk_satan:
-                          os.system("Hillarylaugh.wav")
-                      print(your_special_attacks[int(player_input)-1]['result'])
-                      votes += your_special_attacks[int(player_input)-1]['votes']
-                      your_special_attacks.remove(int(player_input)-1)
-                      response_made = True
-                  else:
+                  try:
+                      if int(player_input)>0 and int(player_input)<menu_number:
+                          if player_response == spatk_satan:
+                              os.system("Hillarylaugh.wav")
+                          print(your_special_attacks[int(player_input)-1]['result'])
+                          votes += your_special_attacks[int(player_input)-1]['votes']
+                          your_special_attacks.remove(your_special_attacks[int(player_input)-1])
+                          response_made = True
+                        else:
+                            print('That didn\'t make sense.')
+                  except:
                       print('That didn\'t make sense.')
     else:
         print('You have ' + votes_to_string() + ' votes.')
@@ -121,7 +126,7 @@ You earn more votes for better-fitting answers, but you cannot make the same res
         print()
         print(your_special_attacks[0]['result'])
         votes += your_special_attacks[int(player_input)-1]['votes']
-
+    #Debate is over
     print()    
     print('The debate is over.')
     print('You ended with ' + votes_to_string() + ' votes.')
@@ -347,4 +352,4 @@ Hillary. She's not impressed but the crowd go wild. You gain 1,000,000 votes.'''
     'item':item_money
 }
 
-spatks = shuffle([spatk_eagle, spatk_satan, spatk_photo, spatk_money])
+spatks = [spatk_eagle, spatk_satan, spatk_photo, spatk_money]
