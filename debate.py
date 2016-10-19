@@ -137,6 +137,8 @@ You earn more votes for better-fitting answers, but you cannot make the same res
     else:
         print('You lost the debate, as you needed at least 75,000,000 votes. Hillary became president. Welp.')
         game_over = True
+    room_debate["description"] = '''The debate hall is now void of life. You spot a few tattered American flags on the floor.'''
+    room_debate["image"] = ""
     print()
     print('Press enter to continue.')
     wait = input()
