@@ -1,4 +1,8 @@
 #this function prints the title of the game
+import time
+import sys
+
+
 
 def game_title():
 	print( '''
@@ -20,8 +24,9 @@ def game_title():
 def game_intro():
 
   print(''' \n\n\n\n\t\t\t -- I N T R O -- \n\n\n\n ''')
-  print(''' 
-      America has lost its way.. Obama has run this country to the ground!
+  
+  text='''
+        America has lost its way.. Obama has run this country to the ground!
       We need you Mr Trump, save us, MAKE US GREAT AGAIN.
 
       Your plans for the Wall and the Future of America is in jeopardy
@@ -29,7 +34,14 @@ def game_intro():
       her in the debates to gain the sway of the voters.
       
       To defeat a foe like Crooked Hillary Clinton at the final Debate, you
-      need all the help you can get, we wish you the best of luck! ''')
+      need all the help you can get, we wish you the best of luck! '''
+  for char in text:
+          sys.stdout.write(char)
+          time.sleep(0.036)
+        
+ 
+
+
 
 game_title()
 
