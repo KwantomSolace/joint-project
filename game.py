@@ -7,7 +7,6 @@ from items import *
 from gameparser import *
 from images import *
 from debate import *
-import random
 import os
 
 game_over = False
@@ -152,6 +151,7 @@ def execute_go(direction):
     
     if move(current_room["exits"], direction) == rooms['Debate'] and not (item_satans_number in inventory or item_eagle in inventory or item_money in inventory or item_photo in inventory):
         print('You are not prepared for the debate, so you cannot yet enter.')
+        print()
         return
     elif move(current_room["exits"], direction) == rooms['Debate'] and (item_satans_number in inventory or item_eagle in inventory or item_money in inventory or item_photo in inventory):    
         print('You are prepared for the debate, but you only have one chance to reach 75 million votes. Proceed?')
@@ -170,6 +170,7 @@ def execute_go(direction):
         return     
     elif move(current_room["exits"], direction) == rooms['House'] and not item_key in inventory:
         print('The doors to the White House are covered in chains and are padlocked. As presumed, it is a big house that is white!')
+        print()
         return
     elif move(current_room["exits"], direction) == rooms['House'] and item_key in inventory:    
         print('There\'s no going back once you enter the White House. Proceed?')

@@ -1,5 +1,7 @@
 from items import *
 from player import *
+import random
+import os
 
 def votes_to_string():
     global votes

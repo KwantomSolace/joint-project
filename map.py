@@ -81,7 +81,7 @@ pieces of furniture. A money sofa sits in the far
 corner and a wall-to-wall flat screen money TV is placed in
 front of it.""",
 
-    "exits": {"up":"Tower"},
+    "exits": {"up":"Office"},
 
     "items": [item_money]
 }
