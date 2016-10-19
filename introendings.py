@@ -55,15 +55,86 @@ We wish you the best of luck!
   wait = input()
 
 def execute_trump_wins():
+  print('''
+    ```.-:::/++ooosssssssssssssssss+-`                                     
+                                                         `..-:::/+osssssyyyyyyyyhhhhhhhyhhhhhyhhhyyyo/-`                                    
+                                                 `..-:/++osyhhhhddddhhhhhhhhhyyso+++//:::-..`..-::+o/-`                                     
+                                          ``.-/+osyyyyhhhhhhhhhhhyso+/::-.````                                                              
+                                    `.-/+ossyyhhhhhhhysoo+:..````                                                                           
+                    ym-         `.:+syyhhhhhhys+/:-```                                                                                      
+                   +MMd`     `-+yyhhhhyo+:-.``                                            `.......--:::::/+++o++++++///:::-.`               
+                  .Nd+Mo    .oyhhso/-.`                                     ``````.--:/+oossysssssssyyyyyyyyyyyyyyyysyyyyss+-`              
+                 `dN- hM:   oy+:.`                                  `.-:::/oossoosyyhhdddhhhhhhhhhhhhyyyyyyssooooosyyyyyyys+-`              
+                 oM+  .mm` -/.                           ``.-:/++++ossyyyyyhhhhhhhhhhhyyso+/:...--...``````       ```````...`               
+                -Nh    :My `                        .-/+ossyyyhhhhhhhhysssso/:::::-..```                                                    
+ `:::::::://////mN.     sM+//////:::::::-        `:oyhhhhyyysoo+///::.````                                                                  
+ /dNMmhyyysssssss-      `osssssssyyydNMNy`     `-syss+:-...``                                                                               
+  `:ydh+.                        `:ydh+-       .:.```                                                                                       
+     ./ydh/.                  `:sddo-`                                                                                                      
+        ./hdh/`             -sddo-`                                                                                                         
+           .mM.             hM+`    ./oyyys+-`  `:syhhys/`   oyo.    /ys`  `:oyhhhy+-   /yyyyyys+-       /yy:    yyyyyyyyyy/ ./shhhys/.     
+           :My              -Mh    +mNho++smd- -dMdo//odMd-  dMMd/`  oMm` -hNdo//+yd+   sMN++++yMN/     /NNMm-   ++++NMh+++-.dMd+//ohm+     
+          `mm`     ./+-`     sM/  .MM+     `. `dMh`    `hMm  dMddMy- oMm` dMh` `:::/:-  sMm-.../NM+    :NM+sMm-     `NMo    `dNms+:-..      
+          oM/  `.+hdhsdds:`  `mN` :MN.        `mMs      oMM` dMy`sNNosMm` NMs  :dddNMd  sMNdddmMNo    :NMh::dMm-    `NMo     `:+shdmmd+`    
+         -Nh`.+hmy/.  `:odds:`/Ms .NMs.`  `-:` sMm:````:mMy  dMy  -hMNMm` sMm:```.-mMd  sMm-..-yMm-  :NMmddddmMm.   `NMo     :+.```.oMM-    
+         dMyhmy/`         -oddymM- -hNmhhhdNd- `+mNdhhdNmo`  hMy   `+mMm` `+dNdhhdmmMd  sMd`   `sNm--mNs     `hNd`  `NMo    .ymNdhhdmms`    
+        :Nms:`               -+dNy   .:///:-`    `-://:-`    -:-     .:-    `.://:..:-  .:-     `::--::       `::.   ::.      `-://:-`      
+    `.` `-`   `..  `.......`    ..   ........`   ........`    ..........   ``.--..`   `..  `.......`    `.........` `..`     ..` ...........
+    sMm:     `yMm. :MNNmmmmmy-      `mMNmmmmmd+  yMNmmmmmdo`  dMNmmmmmmh` :hmmmmNmd+  +MN` :NNNmmmmmy-  -MMNmmmmmm+ -NNh-   `dMo`hmmmNMNmmmh
+    yMMN/   .dMMm. :MN-```.dMd      `mMo````+MM: hMd````/NM+  mMs```````  NMd-``.:s-  +MN` :MM:```-sMN: -MM:``````  -MMNNo` `mMs ````dMh````
+    yMNmN+ -mMmMm. :MMsoooyNN/      `mMh///+hMm. hMmoooohMd.  mMmhhhhhy.  :hNNmhyo/`  +MN` :MM-    `mMy -MMdhhhhhs  -MM+hMm/`mMs     hMh    
+    yMd-mMsmM+oMm. :MMyssyNMy`      `mMmhhhhy+`  hMmsssdMN/   mMh+++++/`   ``.:+odMm- +MN` :MM-    .mMs -MMo+++++/  -MM: /mMymMs     hMh    
+    yMd .dMN/ +Mm. :MN-   .dMh`     `mMo         hMh    /NM+  mMh::::::- `smy+:-:oMM/ +MN` :MM+::/+dMd. -MM+::::::. -MM:  `sMMMs     hMh    
+    ody  `y:  /dh` :dd.    .hds     `hd+         sds     /dd: yddddddddy` -oydmmmhs-  /dd` -ddddddhs/`  -ddddddddd+ -dd-    -hd+     sds)''')
+   
     os.system("TrumpWin.wav")
+    textwin= '''
+    \n\n\n\n\t\t\t Y O U - W I N \n\n\n\n\t\t\t
+    Congratulations MR TRUMP. The White House is yours.
+    A new era begins for the United States. .
+
+
+    Life after Trump appears normal. . . . albeit strangely very few minorities
+    are spotted. The economy. . Isn't getting better, This wall. .I thought Mexico
+    was paying for it. wait. no. GO BACK. WE NEED TO GO BACK. 
+
+    '''
+
+    for char in textwin:
+      sys.stdout.write(char)
+      sys.stdout.flush()
+      time.sleep(0.020)
+
     #program delay and print ascii art. OR write short description of life after Trump
 
 def execute_trump_wins_too_much():
     os.system("TrumpWin.wav")
     os.system("HillaryLaugh.wav")
+
+    print('''
+    \n\n\n\n\t\t\t Y O U - W I N \n\n\n\n\t\t\t
+    Congratulations MR TRUMP. The White House is yours.
+    A new era begins for the United States. .''')
+
+    textexc='''
+    ******BOOOM******
+    Y O U   H A V E  B E E N  K I L L E D
+
+    It appears your overwhelming success had forced Crooked Hillary Clinton 
+    to hire I.S. mercenaries for your execution.
+    \n\n\n\n\t\t\t Game--Over \n\n\n\n\t\t\t'''
+
+     for char in textexc:
+      sys.stdout.write(char)
+      sys.stdout.flush()
+      time.sleep(0.020)
     #He gets assassinated on the doorstep by ISIS mercenaries hired by Hillary
     
 def execute_hillary_wins():
+
+  print('''\n\n\n\n\t\t\t Game--Over \n\n\n\n\t\t\t''')
+  print('''You let Crooked Hillary Clinton Win! Once again those scummy political types
+    has the country in its grasp! You Failed America!''')
     #play music (need music) and print ascii art
     print()#delete this print statementafter adding music and ascii
         
