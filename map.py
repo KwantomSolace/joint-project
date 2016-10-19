@@ -40,7 +40,7 @@ There are stars and stripes everywhere, and someone seems to have brought
 a grill to make burgers. People are riding around on their Walmart mobility
 scooters, complete with monster truck tyres.""",
 
-    "exits": {"west":"Tower"},
+    "exits": {"west":"Car"},
 
     "items": []
 }
@@ -55,7 +55,7 @@ walls, the doors and the floors. Grandiose looking
 furniture fills the lobby and a golden cage meant for
 housing a bald eagle sits in the very middle of the room.""",
 
-    "exits": {"north":"House","east":"Debate","south":"Bar","west":"Office"},
+    "exits": {"east":"Car","left":"Office"},
 
     "items": [item_eagle]
 }
@@ -65,7 +65,7 @@ room_house = {
 
     "description":'',
 
-    "exits": {"south":"Tower"},
+    "exits": {"south":"Car"},
 
     "items": []
 }
@@ -80,7 +80,7 @@ pieces of furniture. A money sofa sits in the far
 corner and a wall-to-wall flat screen money TV is placed in
 front of it.""",
 
-    "exits": {"south":"Office"},
+    "exits": {"right":"Office"},
 
     "items": [item_money]
 }
@@ -96,7 +96,7 @@ always look good from every angle. You look yourself
 up and down in one of the mirrors, you're looking
 hot as always.""",
 
-    "exits": {"north":"Vault","east":"Tower"},
+    "exits": {"left":"Vault","right":"Tower"},
 
     "items": []
 }
@@ -106,7 +106,7 @@ room_car = {
 
     "description": """Your chauffeur just picked you up.""",
 
-    "exits": {"tower":"Tower", "bar":"Bar", "debate":"Debate", "house":"House"},
+    "exits": {"north":"House","east":"Debate","south":"Bar","west":"Tower"},
 
     "items": []
 }
