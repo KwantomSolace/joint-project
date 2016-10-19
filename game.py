@@ -149,54 +149,56 @@ def execute_go(direction):
     """
     global current_room
 
-    
-    if move(current_room["exits"], direction) == rooms['Debate'] and not (item_satans_number in inventory or item_eagle in inventory or item_money in inventory or item_photo in inventory):
-        print('You are not prepared for the debate, so you cannot yet enter.')
-        print()
-        return
-    elif move(current_room["exits"], direction) == rooms['Debate'] and (item_satans_number in inventory or item_eagle in inventory or item_money in inventory or item_photo in inventory):    
-        print('You are prepared for the debate, but you only have one chance to reach 75 million votes. Proceed?')
-        player_input = None
-        while player_input == None:
-            player_input = input('> ')
-            if len(normalise_input(player_input))>0 and (normalise_input(player_input)[0] == 'yes' or normalise_input(player_input)[0] == 'y' or normalise_input(player_input)[0] == 'yeah' or normalise_input(player_input)[0] == 'yep' or normalise_input(player_input)[0] == 'yup' or normalise_input(player_input)[0] == 'aye'):
-                current_room = move(current_room["exits"], direction)
-                debate()
-                return
-            if len(normalise_input(player_input))>0 and (normalise_input(player_input)[0] == 'no' or normalise_input(player_input)[0] == 'n' or normalise_input(player_input)[0] == 'nope'):
-                print()
-                return
-            else:
-                print('I didn\'t quite get that. Are you willing to debate?')
-                player_input = None
-        return     
-    elif move(current_room["exits"], direction) == rooms['House'] and not item_key in inventory:
-        print('The doors to the White House are covered in chains and are padlocked. As presumed, it is a big house that is white!')
-        print()
-        return
-    elif move(current_room["exits"], direction) == rooms['House'] and item_key in inventory:    
-        print('There\'s no going back once you enter the White House. Proceed?')
-        player_input = None
-        while player_input == None:
-            player_input = input('> ')
-            if len(normalise_input(player_input))>0 and (normalise_input(player_input)[0] == 'yes'  or normalise_input(player_input)[0] == 'y' or normalise_input(player_input)[0] == 'yeah' or normalise_input(player_input)[0] == 'yep' or normalise_input(player_input)[0] == 'yup' or normalise_input(player_input)[0] == 'aye'):
-                print()
-                current_room = move(current_room["exits"], direction)
-                return
-            if len(normalise_input(player_input))>0 and (normalise_input(player_input)[0] == 'no' or normalise_input(player_input)[0] == 'n' or normalise_input(player_input)[0] == 'nope'):
-                print()
-                return
-            else:
-                print('I didn\'t quite get that. Are you willing to enter the White House?')
-                player_input = None
-        return
-    elif move(current_room["exits"], direction) == rooms['Booths'] and not item_photo in inventory:
-        current_room = move(current_room["exits"], direction)
-        inventory.append(item_photo)
-        return
-    if is_valid_exit(current_room["exits"], direction):
-        current_room = move(current_room["exits"], direction)
-    else:
+    try:
+        if move(current_room["exits"], direction) == rooms['Debate'] and not (item_satans_number in inventory or item_eagle in inventory or item_money in inventory or item_photo in inventory):
+            print('You are not prepared for the debate, so you cannot yet enter.')
+            print()
+            return
+        elif move(current_room["exits"], direction) == rooms['Debate'] and (item_satans_number in inventory or item_eagle in inventory or item_money in inventory or item_photo in inventory):    
+            print('You are prepared for the debate, but you only have one chance to reach 75 million votes. Proceed?')
+            player_input = None
+            while player_input == None:
+                player_input = input('> ')
+                if len(normalise_input(player_input))>0 and (normalise_input(player_input)[0] == 'yes' or normalise_input(player_input)[0] == 'y' or normalise_input(player_input)[0] == 'yeah' or normalise_input(player_input)[0] == 'yep' or normalise_input(player_input)[0] == 'yup' or normalise_input(player_input)[0] == 'aye'):
+                    current_room = move(current_room["exits"], direction)
+                    debate()
+                    return
+                if len(normalise_input(player_input))>0 and (normalise_input(player_input)[0] == 'no' or normalise_input(player_input)[0] == 'n' or normalise_input(player_input)[0] == 'nope'):
+                    print()
+                    return
+                else:
+                    print('I didn\'t quite get that. Are you willing to debate?')
+                    player_input = None
+            return     
+        elif move(current_room["exits"], direction) == rooms['House'] and not item_key in inventory:
+            print('The doors to the White House are covered in chains and are padlocked. As presumed, it is a big house that is white!')
+            print()
+            return
+        elif move(current_room["exits"], direction) == rooms['House'] and item_key in inventory:    
+            print('There\'s no going back once you enter the White House. Proceed?')
+            player_input = None
+            while player_input == None:
+                player_input = input('> ')
+                if len(normalise_input(player_input))>0 and (normalise_input(player_input)[0] == 'yes'  or normalise_input(player_input)[0] == 'y' or normalise_input(player_input)[0] == 'yeah' or normalise_input(player_input)[0] == 'yep' or normalise_input(player_input)[0] == 'yup' or normalise_input(player_input)[0] == 'aye'):
+                    print()
+                    current_room = move(current_room["exits"], direction)
+                    return
+                if len(normalise_input(player_input))>0 and (normalise_input(player_input)[0] == 'no' or normalise_input(player_input)[0] == 'n' or normalise_input(player_input)[0] == 'nope'):
+                    print()
+                    return
+                else:
+                    print('I didn\'t quite get that. Are you willing to enter the White House?')
+                    player_input = None
+            return
+        elif move(current_room["exits"], direction) == rooms['Booths'] and not item_photo in inventory:
+            current_room = move(current_room["exits"], direction)
+            inventory.append(item_photo)
+            return
+        if is_valid_exit(current_room["exits"], direction):
+            current_room = move(current_room["exits"], direction)
+        else:
+            print("You cannot go there.")
+    except:
         print("You cannot go there.")
 
 
