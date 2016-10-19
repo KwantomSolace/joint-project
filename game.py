@@ -462,9 +462,9 @@ def votes_to_string():#puts commas in the right places
     return votes_as_string[::-1]
 
 def main():
-    #os.system("Anthem.wav")
-    #game_title()
-    #game_intro()
+    os.system("Anthem.wav")
+    game_title()
+    game_intro()
     print()
     global game_over
     global previous_room
@@ -477,9 +477,9 @@ def main():
         if current_room == rooms['Bar'] and not item_satans_number in inventory and item_money in inventory:#this executes after you first enter the bar with money in your inventory, and after the room details are displayed
             print('Press enter to continue.')
             wait = input()
-            print(''You go over to the bar and slap down $20 for the finest drink on the menu. Satan
+            print('''You go over to the bar and slap down $20 for the finest drink on the menu. Satan
 recognises you and says it's on the house. The two of you chat until you finish drinking,
-then he gives you his number, telling you to call him whenever you need his help.'')
+then he gives you his number, telling you to call him whenever you need his help.''')
             inventory.append(item_satans_number)
             print()
             
